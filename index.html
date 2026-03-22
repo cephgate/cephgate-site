@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cephgate — Intelligent Workflow Decisions</title>
+  <meta name="description" content="Cephgate turns email requests into executed decisions. AI queries your systems, surfaces the answer, and lets you approve in one click — right from your inbox."/>
+  <style>
+    :root {
+      --navy: #0b1120;
+      --dark: #111827;
+      --card: #1a2540;
+      --teal: #0ea5e9;
+      --teal-dark: #0284c7;
+      --teal-glow: rgba(14,165,233,0.15);
+      --text: #f1f5f9;
+      --muted: #94a3b8;
+      --border: rgba(255,255,255,0.07);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: var(--navy);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    /* NAV */
+    nav {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.2rem 2rem;
+      border-bottom: 1px solid var(--border);
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(11,17,32,0.92);
+      backdrop-filter: blur(12px);
+    }
+    .logo { display: flex; align-items: center; gap: 0.5rem; font-weight: 700; font-size: 1.2rem; letter-spacing: -0.01em; }
+    .logo-icon { font-size: 1.4rem; }
+    .patent-badge {
+      font-size: 0.68rem; color: var(--muted); border: 1px solid var(--border);
+      padding: 0.2rem 0.6rem; border-radius: 999px; letter-spacing: 0.03em;
+    }
+    .nav-cta {
+      background: var(--teal); color: #fff; padding: 0.5rem 1.2rem;
+      border-radius: 6px; text-decoration: none; font-weight: 600; font-size: 0.9rem;
+      transition: background 0.2s;
+    }
+    .nav-cta:hover { background: var(--teal-dark); }
+
+    /* HERO */
+    .hero {
+      max-width: 860px; margin: 0 auto;
+      padding: 6rem 2rem 4rem;
+      text-align: center;
+    }
+    .hero-eyebrow {
+      display: inline-block; font-size: 0.8rem; font-weight: 600;
+      color: var(--teal); letter-spacing: 0.08em; text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
+    h1 {
+      font-size: clamp(2.2rem, 5vw, 3.4rem);
+      font-weight: 800; letter-spacing: -0.03em; line-height: 1.15;
+      margin-bottom: 1.5rem;
+    }
+    h1 span { color: var(--teal); }
+    .hero-sub {
+      font-size: 1.15rem; color: var(--muted); max-width: 580px;
+      margin: 0 auto 2.5rem;
+    }
+    .hero-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--teal); color: #fff; padding: 0.75rem 1.8rem;
+      border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 1rem;
+      transition: background 0.2s, transform 0.1s;
+    }
+    .btn-primary:hover { background: var(--teal-dark); transform: translateY(-1px); }
+    .btn-secondary {
+      background: transparent; color: var(--text); padding: 0.75rem 1.8rem;
+      border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 1rem;
+      border: 1px solid var(--border); transition: border-color 0.2s;
+    }
+    .btn-secondary:hover { border-color: var(--teal); color: var(--teal); }
+
+    /* DEMO PREVIEW */
+    .demo-preview {
+      max-width: 900px; margin: 0 auto 5rem;
+      padding: 0 2rem;
+    }
+    .demo-frame {
+      border-radius: 12px; overflow: hidden;
+      border: 1px solid var(--border);
+      box-shadow: 0 0 80px rgba(14,165,233,0.12), 0 20px 60px rgba(0,0,0,0.5);
+    }
+    .demo-bar {
+      background: #1e293b; padding: 0.6rem 1rem;
+      display: flex; align-items: center; gap: 0.5rem;
+    }
+    .dot { width: 10px; height: 10px; border-radius: 50%; }
+    .dot.red { background: #ef4444; }
+    .dot.yellow { background: #f59e0b; }
+    .dot.green { background: #22c55e; }
+    .demo-url { font-size: 0.75rem; color: var(--muted); margin-left: 0.5rem; }
+    .demo-inner {
+      background: #0f172a; padding: 1.5rem;
+      display: grid; grid-template-columns: 1fr 1.8fr; gap: 1rem; min-height: 280px;
+    }
+    .demo-chat {
+      background: var(--card); border-radius: 8px; padding: 1rem;
+      border: 1px solid var(--border);
+    }
+    .demo-chat-label { font-size: 0.7rem; color: var(--teal); font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.8rem; }
+    .chat-msg { font-size: 0.78rem; color: var(--muted); margin-bottom: 0.6rem; padding: 0.5rem 0.7rem; background: rgba(255,255,255,0.04); border-radius: 6px; }
+    .chat-msg.ai { color: var(--text); border-left: 2px solid var(--teal); }
+    .demo-inbox {
+      background: var(--card); border-radius: 8px; padding: 1rem;
+      border: 1px solid var(--border);
+    }
+    .demo-inbox-label { font-size: 0.7rem; color: var(--teal); font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.8rem; }
+    .inbox-row {
+      display: flex; align-items: center; gap: 0.6rem; padding: 0.5rem 0.4rem;
+      border-radius: 5px; font-size: 0.78rem; border-bottom: 1px solid var(--border);
+    }
+    .inbox-row:last-child { border-bottom: none; }
+    .inbox-badge { font-size: 0.65rem; padding: 0.15rem 0.5rem; border-radius: 999px; font-weight: 700; }
+    .badge-high { background: rgba(239,68,68,0.2); color: #f87171; }
+    .badge-med { background: rgba(251,191,36,0.2); color: #fbbf24; }
+    .action-card {
+      background: rgba(14,165,233,0.08); border: 1px solid rgba(14,165,233,0.25);
+      border-radius: 8px; padding: 0.8rem; margin-top: 0.6rem;
+    }
+    .action-card-title { font-size: 0.72rem; color: var(--teal); font-weight: 600; margin-bottom: 0.4rem; }
+    .action-card-body { font-size: 0.75rem; color: var(--muted); margin-bottom: 0.7rem; }
+    .action-btns { display: flex; gap: 0.5rem; }
+    .btn-approve { background: #16a34a; color: #fff; border: none; padding: 0.3rem 0.8rem; border-radius: 4px; font-size: 0.72rem; font-weight: 700; cursor: pointer; }
+    .btn-deny { background: transparent; color: #f87171; border: 1px solid #f87171; padding: 0.3rem 0.8rem; border-radius: 4px; font-size: 0.72rem; font-weight: 700; cursor: pointer; }
+
+    /* HOW IT WORKS */
+    .section { max-width: 960px; margin: 0 auto; padding: 4rem 2rem; }
+    .section-label { font-size: 0.8rem; font-weight: 600; color: var(--teal); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.8rem; }
+    h2 { font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 800; letter-spacing: -0.02em; margin-bottom: 1rem; }
+    .section-sub { color: var(--muted); font-size: 1.05rem; max-width: 520px; margin-bottom: 3rem; }
+    .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; }
+    .step {
+      background: var(--card); border-radius: 12px; padding: 1.5rem;
+      border: 1px solid var(--border); position: relative;
+    }
+    .step-num {
+      width: 32px; height: 32px; border-radius: 50%;
+      background: var(--teal-glow); border: 1px solid var(--teal);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.8rem; font-weight: 700; color: var(--teal);
+      margin-bottom: 1rem;
+    }
+    .step h3 { font-size: 1rem; font-weight: 700; margin-bottom: 0.4rem; }
+    .step p { font-size: 0.88rem; color: var(--muted); }
+
+    /* FEATURES */
+    .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.2rem; }
+    .feature {
+      background: var(--card); border-radius: 10px; padding: 1.4rem;
+      border: 1px solid var(--border);
+    }
+    .feature-icon { font-size: 1.6rem; margin-bottom: 0.8rem; }
+    .feature h3 { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.3rem; }
+    .feature p { font-size: 0.85rem; color: var(--muted); }
+
+    /* DIVIDER */
+    .divider { border: none; border-top: 1px solid var(--border); margin: 0; }
+
+    /* CTA */
+    .cta-section {
+      max-width: 680px; margin: 0 auto; padding: 5rem 2rem;
+      text-align: center;
+    }
+    .cta-section h2 { margin-bottom: 1rem; }
+    .cta-section p { color: var(--muted); margin-bottom: 2.5rem; font-size: 1.05rem; }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 1.5rem 2rem;
+      display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;
+      color: var(--muted); font-size: 0.8rem;
+    }
+    footer a { color: var(--muted); text-decoration: none; }
+    footer a:hover { color: var(--teal); }
+
+    @media (max-width: 600px) {
+      .demo-inner { grid-template-columns: 1fr; }
+      nav .patent-badge { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="logo">
+      <span class="logo-icon">🐙</span>
+      <span>Cephgate</span>
+    </div>
+    <span class="patent-badge">Patent Pending · U.S. App. No. 64/012,741</span>
+    <a href="https://cephgate-demo-production.up.railway.app" class="nav-cta" target="_blank">See the Demo →</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <span class="hero-eyebrow">Intelligent Workflow Automation</span>
+    <h1>Turn emails into <span>executed decisions</span></h1>
+    <p class="hero-sub">
+      Cephgate reaches into your systems simultaneously, surfaces everything you need to decide, and delivers it as a one-click Action Card — right in your inbox.
+    </p>
+    <div class="hero-actions">
+      <a href="https://cephgate-demo-production.up.railway.app" class="btn-primary" target="_blank">See it Live →</a>
+      <a href="mailto:chris@cephgate.ai" class="btn-secondary">Request a Demo</a>
+    </div>
+  </section>
+
+  <!-- DEMO PREVIEW -->
+  <div class="demo-preview">
+    <div class="demo-frame">
+      <div class="demo-bar">
+        <div class="dot red"></div>
+        <div class="dot yellow"></div>
+        <div class="dot green"></div>
+        <span class="demo-url">cephgate.ai — live demo</span>
+      </div>
+      <div class="demo-inner">
+        <div class="demo-chat">
+          <div class="demo-chat-label">AI Assistant</div>
+          <div class="chat-msg">How many open seats are in BIOL 301?</div>
+          <div class="chat-msg ai">BIOL 301 currently has <strong>2 seats remaining</strong>. Maria Rodriguez has completed all prerequisites with a 3.7 GPA. Recommend approval.</div>
+          <div class="chat-msg">What's the waitlist count?</div>
+          <div class="chat-msg ai">12 students on waitlist. Historically this section adds a seat 68% of the time by week 3.</div>
+        </div>
+        <div class="demo-inbox">
+          <div class="demo-inbox-label">Department Inbox</div>
+          <div class="inbox-row">
+            <span class="inbox-badge badge-high">HIGH</span>
+            <span style="flex:1; color: var(--text);">Course permit — Maria Rodriguez</span>
+          </div>
+          <div class="action-card">
+            <div class="action-card-title">⚡ AI Action Card · BIOL 301 Permit</div>
+            <div class="action-card-body">
+              Student meets all prerequisites · GPA 3.7 · Section has 2 seats · <strong>Recommendation: APPROVE</strong>
+            </div>
+            <div class="action-btns">
+              <button class="btn-approve">✓ Approve</button>
+              <button class="btn-deny">✗ Deny</button>
+            </div>
+          </div>
+          <div class="inbox-row" style="margin-top:0.5rem; opacity:0.6;">
+            <span class="inbox-badge badge-med">MED</span>
+            <span style="flex:1;">Adjunct contract — Fall 2026</span>
+          </div>
+          <div class="inbox-row" style="opacity:0.4;">
+            <span class="inbox-badge badge-med">MED</span>
+            <span style="flex:1;">Room reservation — Irvin Hall 115</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider"/>
+
+  <!-- HOW IT WORKS -->
+  <section class="section">
+    <div class="section-label">How it works</div>
+    <h2>Eight arms. One brain. One answer.</h2>
+    <p class="section-sub">Like a cephalopod, Cephgate extends into every system simultaneously and returns with exactly what you need to decide.</p>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h3>Request arrives</h3>
+        <p>An email lands in your inbox — a permit, a hire, an approval. Cephgate detects it automatically.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h3>Systems queried instantly</h3>
+        <p>Cephgate queries your data systems in parallel — student records, HR, scheduling, financials — in seconds.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h3>AI recommendation generated</h3>
+        <p>All data is aggregated and analyzed. An AI recommendation is formed with supporting rationale.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <h3>One-click decision</h3>
+        <p>An Action Card appears in your inbox. Approve or deny in one click. Notification sent. Case closed.</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider"/>
+
+  <!-- FEATURES -->
+  <section class="section">
+    <div class="section-label">Capabilities</div>
+    <h2>Built for organizations that run on decisions</h2>
+    <p class="section-sub">Every feature designed to compress the time between request and resolution.</p>
+    <div class="features">
+      <div class="feature">
+        <div class="feature-icon">📨</div>
+        <h3>Inbox-native</h3>
+        <p>No new portal to log into. Action Cards arrive in your existing email workflow, right where you already work.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">🔗</div>
+        <h3>Multi-system integration</h3>
+        <p>Connects to your existing data systems simultaneously. No rip-and-replace required.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">🧠</div>
+        <h3>AI recommendations</h3>
+        <p>Every Action Card includes an AI-generated recommendation with the data that supports it.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">🔀</div>
+        <h3>Multi-level routing</h3>
+        <p>Complex approvals route through multiple levels automatically. Each step tracked and audited.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">⚡</div>
+        <h3>Instant execution</h3>
+        <p>Approval triggers the action immediately. The requester is notified. No follow-up needed.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">🔒</div>
+        <h3>Works within your permissions</h3>
+        <p>Cephgate acts within existing system access. No new security approvals. No new risk surface.</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider"/>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="section-label">Get started</div>
+    <h2>See Cephgate work on your data</h2>
+    <p>We build every demo around your actual workflows — not a generic walkthrough. See what decisions you could be making in seconds instead of days.</p>
+    <div class="hero-actions">
+      <a href="https://cephgate-demo-production.up.railway.app" class="btn-primary" target="_blank">Live Demo →</a>
+      <a href="mailto:chris@cephgate.ai" class="btn-secondary">Contact Us</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div>© 2026 Cephgate · <a href="mailto:chris@cephgate.ai">chris@cephgate.ai</a></div>
+    <div style="color: var(--muted); font-size:0.75rem;">Patent Pending — U.S. Application No. 64/012,741</div>
+  </footer>
+
+</body>
+</html>
