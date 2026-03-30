@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Request a Custom Demo — Cephgate</title>
+  <meta name="description" content="Request a custom Cephgate demo tailored to your industry and workflows."/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy: #0b1120; --dark: #111827; --card: #1a2540;
+      --teal: #0ea5e9; --teal-dark: #0284c7; --teal-glow: rgba(14,165,233,0.15);
+      --accent: #4da3ff; --text: #f1f5f9; --muted: #94a3b8;
+      --border: rgba(255,255,255,0.07); --input-bg: #111827;
+      --input-border: rgba(255,255,255,0.12);
+    }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--navy); color: var(--text); line-height: 1.6; min-height: 100vh; }
+
+    nav { position: sticky; top: 0; z-index: 100; background: rgba(11,17,32,0.95); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); padding: 0 2rem; height: 60px; display: flex; align-items: center; justify-content: space-between; }
+    .logo { display: flex; align-items: center; gap: 0.5rem; font-size: 1.1rem; font-weight: 700; color: var(--text); text-decoration: none; }
+    .nav-back { color: var(--muted); text-decoration: none; font-size: 0.9rem; }
+    .nav-back:hover { color: var(--text); }
+
+    .container { max-width: 680px; margin: 0 auto; padding: 4rem 2rem 6rem; }
+    .eyebrow { display: inline-block; background: var(--teal-glow); border: 1px solid rgba(14,165,233,0.3); color: var(--teal); font-size: 0.75rem; font-weight: 600; padding: 3px 12px; border-radius: 20px; margin-bottom: 1.25rem; letter-spacing: 0.04em; text-transform: uppercase; }
+    h1 { font-size: clamp(1.75rem, 4vw, 2.5rem); font-weight: 800; line-height: 1.15; margin-bottom: 0.75rem; }
+    h1 span { color: var(--teal); }
+    .subtitle { color: var(--muted); font-size: 1rem; margin-bottom: 2.5rem; }
+
+    form { display: flex; flex-direction: column; gap: 1.5rem; }
+
+    .field { display: flex; flex-direction: column; gap: 0.4rem; }
+    .field label { font-size: 0.85rem; font-weight: 600; color: var(--text); }
+    .field .hint { font-size: 0.78rem; color: var(--muted); }
+    .field input, .field select, .field textarea {
+      background: var(--input-bg);
+      border: 1px solid var(--input-border);
+      border-radius: 8px;
+      color: var(--text);
+      font-family: inherit;
+      font-size: 0.9rem;
+      padding: 0.65rem 0.9rem;
+      outline: none;
+      transition: border-color 0.2s;
+      width: 100%;
+    }
+    .field input:focus, .field select:focus, .field textarea:focus { border-color: var(--teal); }
+    .field select option { background: #1a2540; }
+    .field textarea { resize: vertical; min-height: 90px; }
+
+    .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+    .section-heading { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--teal); padding-top: 0.5rem; border-top: 1px solid var(--border); }
+
+    .required { color: var(--teal); margin-left: 2px; }
+
+    .submit-btn {
+      background: var(--teal); color: #fff; border: none; border-radius: 8px;
+      font-size: 1rem; font-weight: 700; padding: 0.85rem 2rem;
+      cursor: pointer; transition: background 0.2s, transform 0.15s;
+      margin-top: 0.5rem;
+    }
+    .submit-btn:hover { background: var(--teal-dark); transform: translateY(-1px); }
+    .submit-btn:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+
+    .success { display: none; background: rgba(34,197,94,0.1); border: 1px solid rgba(34,197,94,0.3); border-radius: 10px; padding: 2rem; text-align: center; }
+    .success h2 { color: #22c55e; margin-bottom: 0.5rem; }
+    .success p { color: var(--muted); }
+
+    footer { text-align: center; padding: 2rem; font-size: 0.8rem; color: var(--muted); border-top: 1px solid var(--border); }
+    footer a { color: var(--accent); text-decoration: none; }
+
+    @media (max-width: 560px) { .field-row { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="/" class="logo">🐙 Cephgate</a>
+    <a href="/" class="nav-back">← Back to home</a>
+  </nav>
+
+  <div class="container">
+    <span class="eyebrow">Custom Demo Request</span>
+    <h1>Let's build a demo <span>for your team</span></h1>
+    <p class="subtitle">Tell us about your workflows and the systems you use. We'll customize the demo around your actual data and processes — not a generic walkthrough.</p>
+
+    <form id="demo-form">
+
+      <!-- Contact -->
+      <div class="section-heading">Your Contact Info</div>
+
+      <div class="field-row">
+        <div class="field">
+          <label>First Name <span class="required">*</span></label>
+          <input type="text" name="first_name" required placeholder="Jane" />
+        </div>
+        <div class="field">
+          <label>Last Name <span class="required">*</span></label>
+          <input type="text" name="last_name" required placeholder="Smith" />
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Work Email <span class="required">*</span></label>
+        <input type="email" name="email" required placeholder="jane@organization.edu" />
+      </div>
+
+      <div class="field-row">
+        <div class="field">
+          <label>Job Title <span class="required">*</span></label>
+          <input type="text" name="title" required placeholder="Director of Operations" />
+        </div>
+        <div class="field">
+          <label>Organization <span class="required">*</span></label>
+          <input type="text" name="organization" required placeholder="University / Company Name" />
+        </div>
+      </div>
+
+      <!-- Vertical -->
+      <div class="section-heading">Your Use Case</div>
+
+      <div class="field">
+        <label>Which product are you interested in? <span class="required">*</span></label>
+        <select name="vertical" required>
+          <option value="" disabled selected>Select one…</option>
+          <option value="cochair">CoChair — Higher Education (course permits, advising, enrollment)</option>
+          <option value="smb_expense">SMB Expense &amp; AP Approvals (expense reports, invoice approvals)</option>
+          <option value="healthcare">Healthcare Billing (prior auth, claim denials, EOB workflows)</option>
+          <option value="hr_it">HR &amp; IT Workflows (onboarding, access requests, headcount approvals)</option>
+          <option value="other">Other — I'll describe below</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label>Describe your current approval workflow</label>
+        <div class="hint">What types of requests come in? Who approves them? How long does it take today?</div>
+        <textarea name="current_workflow" placeholder="e.g. Students email us for course permits. We manually look them up in Banner, check prereqs, then reply. Takes 10-15 min per request…"></textarea>
+      </div>
+
+      <!-- Systems -->
+      <div class="section-heading">Your Current Tech Stack</div>
+
+      <div class="field">
+        <label>Student / HR Information System</label>
+        <div class="hint">e.g. Ellucian Banner, Workday, PeopleSoft, SAP, etc.</div>
+        <input type="text" name="sis" placeholder="Banner 9 (SaaS), Workday Student…" />
+      </div>
+
+      <div class="field">
+        <label>Email Platform</label>
+        <select name="email_platform">
+          <option value="" disabled selected>Select one…</option>
+          <option value="gmail">Gmail / Google Workspace</option>
+          <option value="outlook">Microsoft Outlook / M365</option>
+          <option value="both">Both (hybrid)</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label>Other relevant software</label>
+        <div class="hint">Scheduling tools, reporting platforms, ERP, EHR, billing systems, etc.</div>
+        <input type="text" name="other_software" placeholder="e.g. 25Live, Cognos, QuickBooks, Epic, Salesforce…" />
+      </div>
+
+      <!-- Scale -->
+      <div class="section-heading">Scale &amp; Timeline</div>
+
+      <div class="field-row">
+        <div class="field">
+          <label>How many people would use this?</label>
+          <select name="team_size">
+            <option value="" disabled selected>Select…</option>
+            <option value="1-5">1–5</option>
+            <option value="6-20">6–20</option>
+            <option value="21-100">21–100</option>
+            <option value="100+">100+</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>When are you looking to implement?</label>
+          <select name="timeline">
+            <option value="" disabled selected>Select…</option>
+            <option value="asap">As soon as possible</option>
+            <option value="1-3mo">1–3 months</option>
+            <option value="3-6mo">3–6 months</option>
+            <option value="exploring">Just exploring for now</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Approximate volume of requests per month</label>
+        <div class="hint">How many emails / approvals does your team handle?</div>
+        <select name="volume">
+          <option value="" disabled selected>Select…</option>
+          <option value="<50">Under 50</option>
+          <option value="50-200">50–200</option>
+          <option value="200-1000">200–1,000</option>
+          <option value="1000+">1,000+</option>
+        </select>
+      </div>
+
+      <!-- Anything else -->
+      <div class="field">
+        <label>Anything else we should know?</label>
+        <textarea name="notes" placeholder="Compliance requirements, procurement process, specific pain points, questions about the patent-pending technology…"></textarea>
+      </div>
+
+      <button type="submit" class="submit-btn" id="submit-btn">Request Custom Demo →</button>
+    </form>
+
+    <div class="success" id="success-msg">
+      <h2>✅ Got it!</h2>
+      <p>Thanks — we'll reach out within one business day to schedule your custom demo.</p>
+      <p style="margin-top:0.75rem;"><a href="/" style="color:var(--accent);">← Back to Cephgate</a></p>
+    </div>
+  </div>
+
+  <footer>
+    <p>Patent Pending — U.S. Application No. 19/632,163 &nbsp;·&nbsp; © 2026 Cephgate &nbsp;·&nbsp; <a href="mailto:chris@cephgate.ai">chris@cephgate.ai</a></p>
+  </footer>
+
+  <script>
+    // Pre-select vertical from URL param
+    const params = new URLSearchParams(window.location.search);
+    const v = params.get('v');
+    if (v) {
+      const sel = document.querySelector('select[name="vertical"]');
+      if (sel) sel.value = v;
+    }
+
+    document.getElementById('demo-form').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const btn = document.getElementById('submit-btn');
+      btn.disabled = true;
+      btn.textContent = 'Sending…';
+
+      const data = Object.fromEntries(new FormData(this));
+      const body = Object.entries(data).map(([k, v]) => `${k}: ${v}`).join('\n');
+
+      try {
+        const subject = encodeURIComponent(`Cephgate Demo Request — ${data.organization || data.email}`);
+        const emailBody = encodeURIComponent(
+          `New demo request from cephgate.com/request-demo\n\n` + body
+        );
+        // Open mailto as fallback — works without a backend
+        window.location.href = `mailto:chris@cephgate.ai?subject=${subject}&body=${emailBody}`;
+      } catch(err) {
+        // fail silently
+      }
+
+      document.getElementById('demo-form').style.display = 'none';
+      document.getElementById('success-msg').style.display = 'block';
+    });
+  </script>
+
+</body>
+</html>
