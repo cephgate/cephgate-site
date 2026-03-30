@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CoChair — Powered by Cephgate</title>
+  <meta name="description" content="CoChair is an AI-powered administrative workflow platform for higher education. Approve course permits, manage advising requests, and streamline Banner and Workday workflows — right from your inbox."/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy: #0b1120;
+      --dark: #111827;
+      --card: #1a2540;
+      --teal: #0ea5e9;
+      --teal-dark: #0284c7;
+      --teal-glow: rgba(14,165,233,0.15);
+      --accent: #4da3ff;
+      --text: #f1f5f9;
+      --muted: #94a3b8;
+      --border: rgba(255,255,255,0.07);
+      --green: #22c55e;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--navy); color: var(--text); line-height: 1.6; }
+
+    /* Nav */
+    nav { position: sticky; top: 0; z-index: 100; background: rgba(11,17,32,0.95); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); padding: 0 2rem; height: 60px; display: flex; align-items: center; justify-content: space-between; }
+    .logo { display: flex; align-items: center; gap: 0.5rem; font-size: 1.1rem; font-weight: 700; color: var(--text); text-decoration: none; }
+    .logo-sub { font-size: 0.75rem; color: var(--muted); font-weight: 400; margin-left: 4px; }
+    .nav-links { display: flex; align-items: center; gap: 1.5rem; }
+    .nav-link { color: var(--muted); text-decoration: none; font-size: 0.9rem; transition: color 0.2s; }
+    .nav-link:hover { color: var(--text); }
+    .nav-cta { background: var(--teal); color: #fff; padding: 0.45rem 1.1rem; border-radius: 6px; font-size: 0.85rem; font-weight: 600; text-decoration: none; transition: background 0.2s; }
+    .nav-cta:hover { background: var(--teal-dark); }
+
+    /* Hero */
+    .hero { max-width: 800px; margin: 0 auto; padding: 5rem 2rem 3rem; text-align: center; }
+    .hero-eyebrow { display: inline-block; background: var(--teal-glow); border: 1px solid rgba(14,165,233,0.3); color: var(--teal); font-size: 0.8rem; font-weight: 600; padding: 4px 14px; border-radius: 20px; margin-bottom: 1.25rem; letter-spacing: 0.04em; text-transform: uppercase; }
+    .hero h1 { font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; line-height: 1.15; margin-bottom: 1.25rem; }
+    .hero h1 span { color: var(--teal); }
+    .hero-sub { font-size: 1.1rem; color: var(--muted); max-width: 600px; margin: 0 auto 2rem; }
+    .hero-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .btn-primary { background: var(--teal); color: #fff; padding: 0.75rem 1.75rem; border-radius: 8px; font-size: 0.95rem; font-weight: 600; text-decoration: none; transition: background 0.2s, transform 0.15s; }
+    .btn-primary:hover { background: var(--teal-dark); transform: translateY(-1px); }
+    .btn-secondary { background: transparent; color: var(--teal); padding: 0.75rem 1.75rem; border-radius: 8px; border: 1px solid var(--teal); font-size: 0.95rem; font-weight: 600; text-decoration: none; transition: border-color 0.2s, color 0.2s; }
+    .btn-secondary:hover { border-color: var(--teal-dark); color: var(--teal-dark); }
+
+    /* Sections */
+    section { max-width: 1000px; margin: 0 auto; padding: 4rem 2rem; }
+    .section-label { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--teal); margin-bottom: 0.75rem; }
+    .section-title { font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 700; margin-bottom: 1rem; }
+    .section-sub { color: var(--muted); font-size: 1rem; max-width: 640px; margin-bottom: 2.5rem; }
+
+    /* Feature grid */
+    .feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+    .feature-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; }
+    .feature-icon { font-size: 1.6rem; margin-bottom: 0.75rem; }
+    .feature-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--text); }
+    .feature-card p { font-size: 0.875rem; color: var(--muted); line-height: 1.6; }
+
+    /* How it works */
+    .steps { display: flex; flex-direction: column; gap: 1.5rem; }
+    .step { display: flex; gap: 1.25rem; align-items: flex-start; }
+    .step-num { width: 36px; height: 36px; border-radius: 50%; background: var(--teal-glow); border: 1px solid rgba(14,165,233,0.4); color: var(--teal); font-weight: 700; font-size: 0.9rem; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; }
+    .step-body h4 { font-size: 1rem; font-weight: 700; margin-bottom: 0.3rem; }
+    .step-body p { color: var(--muted); font-size: 0.9rem; }
+
+    /* Use cases */
+    .use-cases { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; }
+    .use-case { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 1.25rem; }
+    .use-case .tag { display: inline-block; background: var(--teal-glow); color: var(--teal); font-size: 0.7rem; font-weight: 700; padding: 2px 8px; border-radius: 20px; margin-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 0.04em; }
+    .use-case h4 { font-size: 0.9rem; font-weight: 700; margin-bottom: 0.3rem; }
+    .use-case p { font-size: 0.8rem; color: var(--muted); }
+
+    /* Compliance */
+    .compliance-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.25rem; }
+    .compliance-card { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 1.25rem; display: flex; gap: 0.75rem; align-items: flex-start; }
+    .check { color: var(--green); font-size: 1.1rem; margin-top: 2px; flex-shrink: 0; }
+    .compliance-card h4 { font-size: 0.9rem; font-weight: 700; margin-bottom: 0.25rem; }
+    .compliance-card p { font-size: 0.8rem; color: var(--muted); }
+
+    /* Systems */
+    .systems { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+    .sys-badge { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 0.5rem 1rem; font-size: 0.85rem; color: var(--text); font-weight: 500; }
+
+    /* Divider */
+    hr { border: none; border-top: 1px solid var(--border); }
+
+    /* CTA section */
+    .cta-section { text-align: center; padding: 4rem 2rem; }
+    .cta-section h2 { font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 700; margin-bottom: 1rem; }
+    .cta-section p { color: var(--muted); margin-bottom: 2rem; }
+
+    /* Patent badge */
+    .patent-badge { display: inline-flex; align-items: center; gap: 6px; background: var(--teal-glow); border: 1px solid rgba(14,165,233,0.3); color: var(--teal); font-size: 0.75rem; font-weight: 600; padding: 3px 10px; border-radius: 20px; }
+
+    /* Footer */
+    footer { border-top: 1px solid var(--border); padding: 1.5rem 2rem; text-align: center; font-size: 0.8rem; color: var(--muted); }
+    footer a { color: var(--accent); text-decoration: none; }
+
+    @media (max-width: 600px) {
+      .nav-links .nav-link { display: none; }
+      section { padding: 3rem 1.25rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="/" class="logo">
+      <span>🐙</span>
+      <span>Cephgate</span>
+      <span class="logo-sub">/ CoChair</span>
+    </a>
+    <div class="nav-links">
+      <a href="#features" class="nav-link">Features</a>
+      <a href="#how-it-works" class="nav-link">How It Works</a>
+      <a href="#compliance" class="nav-link">Compliance</a>
+      <a href="https://cephgate.ai" class="nav-cta" target="_blank">See Demo →</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <span class="hero-eyebrow">Higher Education · Powered by Cephgate</span>
+    <h1>Admin decisions in <span>one click</span>,<br/>right in your inbox</h1>
+    <p class="hero-sub">CoChair connects to Banner, Workday, and your other systems — surfaces everything you need to decide — and delivers it as an Action Card in Gmail or Outlook.</p>
+    <div class="hero-actions">
+      <a href="https://cephgate.ai" class="btn-primary" target="_blank">See CoChair Live →</a>
+      <a href="https://cephgate.ai/gmail-demo" class="btn-secondary" target="_blank">See it in Gmail →</a>
+    </div>
+    <div style="margin-top:1.5rem;">
+      <span class="patent-badge">🔒 Patent Pending — U.S. Application No. 19/632,163</span>
+    </div>
+  </div>
+
+  <hr />
+
+  <!-- FEATURES -->
+  <section id="features">
+    <div class="section-label">What CoChair Does</div>
+    <h2 class="section-title">Everything you need to decide, already pulled</h2>
+    <p class="section-sub">CoChair queries Banner, Workday, and your calendar simultaneously — so by the time the Action Card appears, the work is already done.</p>
+    <div class="feature-grid">
+      <div class="feature-card">
+        <div class="feature-icon">📬</div>
+        <h3>Inbox-First Workflow</h3>
+        <p>Works as a Gmail or Outlook plugin. Action Cards appear automatically when a relevant email arrives — no login, no tab switching.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🔗</div>
+        <h3>Multi-System Intelligence</h3>
+        <p>Pulls student records, enrollment data, GPA, prerequisites, open seats, and room availability simultaneously from Banner and Workday.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🤖</div>
+        <h3>AI Recommendation</h3>
+        <p>Each Action Card includes a recommendation — approve, deny, or refer — with supporting data and reasoning surfaced automatically.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">⚡</div>
+        <h3>One-Click Decisions</h3>
+        <p>Approve, deny, schedule a meeting, or refer to the right department — one click, AI-drafted response sent automatically.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📋</div>
+        <h3>Policy Engine</h3>
+        <p>Teach CoChair your department's rules in plain English. It applies them automatically and flags violations before you decide.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📊</div>
+        <h3>Digest &amp; Alerts</h3>
+        <p>Daily summaries of pending decisions, enrollment trends, and waitlists. Set alerts for capacity thresholds or deadline approaches.</p>
+      </div>
+    </div>
+  </section>
+
+  <hr />
+
+  <!-- HOW IT WORKS -->
+  <section id="how-it-works">
+    <div class="section-label">How It Works</div>
+    <h2 class="section-title">From email to decision in seconds</h2>
+    <p class="section-sub">CoChair intercepts admin requests as they arrive and handles the data gathering so you don't have to.</p>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <h4>Email arrives in your inbox</h4>
+          <p>A student submits a permit request, a faculty member asks for a prerequisite override, or a registrar flags a room conflict. CoChair detects the request type automatically.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <h4>CoChair queries your systems simultaneously</h4>
+          <p>In seconds, CoChair pulls the student's record from Banner, checks Workday for enrollment status, looks up open sections, and checks for conflicts — all at once.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <h4>Action Card appears in your sidebar</h4>
+          <p>A structured Action Card surfaces in your Gmail or Outlook sidebar with the student's GPA, prerequisites, open seats, policy flags, and an AI recommendation.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-body">
+          <h4>One click — decision recorded, response sent</h4>
+          <p>Approve, deny, schedule a meeting, or refer to Financial Aid or Advising. CoChair drafts the response, records the decision, and closes the loop — without leaving Gmail.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr />
+
+  <!-- USE CASES -->
+  <section id="use-cases">
+    <div class="section-label">Use Cases</div>
+    <h2 class="section-title">Built for the requests that fill your inbox</h2>
+    <p class="section-sub">CoChair handles the full range of higher education administrative workflows.</p>
+    <div class="use-cases">
+      <div class="use-case">
+        <span class="tag">Enrollment</span>
+        <h4>Capacity Permit Requests</h4>
+        <p>Student GPA, prerequisites, open sections, and seat counts — surfaced instantly.</p>
+      </div>
+      <div class="use-case">
+        <span class="tag">Enrollment</span>
+        <h4>Prerequisite Overrides</h4>
+        <p>Verify transfer credits, completed coursework, and faculty authorization — one view.</p>
+      </div>
+      <div class="use-case">
+        <span class="tag">Advising</span>
+        <h4>Meeting Requests</h4>
+        <p>Draft scheduling replies with availability, or refer to the right advisor or office automatically.</p>
+      </div>
+      <div class="use-case">
+        <span class="tag">Advising</span>
+        <h4>Withdrawal Inquiries</h4>
+        <p>Surface financial aid implications before advising, with referral drafts for the FA office.</p>
+      </div>
+      <div class="use-case">
+        <span class="tag">Scheduling</span>
+        <h4>Room Change Requests</h4>
+        <p>Check available rooms against enrollment and suggest alternatives in one click.</p>
+      </div>
+      <div class="use-case">
+        <span class="tag">Scheduling</span>
+        <h4>Schedule Conflicts</h4>
+        <p>Identify conflict-free section alternatives and generate resolution drafts automatically.</p>
+      </div>
+      <div class="use-case">
+        <span class="tag">Admin</span>
+        <h4>Major Change Requests</h4>
+        <p>Pull degree audit data to show credit transfer impact before responding.</p>
+      </div>
+      <div class="use-case">
+        <span class="tag">Admin</span>
+        <h4>Custom Workflows</h4>
+        <p>Teach CoChair your department's policies in plain English — it applies them automatically.</p>
+      </div>
+    </div>
+  </section>
+
+  <hr />
+
+  <!-- SYSTEMS -->
+  <section>
+    <div class="section-label">Integrations</div>
+    <h2 class="section-title">Connects to your existing systems</h2>
+    <p class="section-sub">CoChair works with the platforms your institution already runs — no rip-and-replace required.</p>
+    <div class="systems">
+      <span class="sys-badge">Ellucian Banner</span>
+      <span class="sys-badge">Banner SaaS</span>
+      <span class="sys-badge">Workday Student</span>
+      <span class="sys-badge">25Live / CollegiateLink</span>
+      <span class="sys-badge">Gmail (Google Workspace)</span>
+      <span class="sys-badge">Microsoft Outlook</span>
+      <span class="sys-badge">Cognos Reporting</span>
+      <span class="sys-badge">Custom SIS via API</span>
+    </div>
+  </section>
+
+  <hr />
+
+  <!-- COMPLIANCE -->
+  <section id="compliance">
+    <div class="section-label">Compliance &amp; Security</div>
+    <h2 class="section-title">Built for higher education data standards</h2>
+    <p class="section-sub">CoChair was designed from the ground up for the compliance requirements of higher education institutions.</p>
+    <div class="compliance-grid">
+      <div class="compliance-card">
+        <span class="check">✓</span>
+        <div>
+          <h4>FERPA Compliant</h4>
+          <p>Student education records never leave your institution's systems. CoChair queries your SIS using your own credentials — data is displayed, not stored.</p>
+        </div>
+      </div>
+      <div class="compliance-card">
+        <span class="check">✓</span>
+        <div>
+          <h4>No Student Data Retained</h4>
+          <p>CoChair does not persist student records, transcripts, or personally identifiable information on Cephgate servers. Each query is ephemeral.</p>
+        </div>
+      </div>
+      <div class="compliance-card">
+        <span class="check">✓</span>
+        <div>
+          <h4>Role-Based Access</h4>
+          <p>Only authorized users see Action Cards. Access is controlled by your institution's existing authentication and role configuration in Banner or Workday.</p>
+        </div>
+      </div>
+      <div class="compliance-card">
+        <span class="check">✓</span>
+        <div>
+          <h4>Data Processing Agreement</h4>
+          <p>Cephgate signs a DPA with each institution as a FERPA "school official" — the same vendor agreement model used by Ellucian, Workday, and other SIS partners.</p>
+        </div>
+      </div>
+      <div class="compliance-card">
+        <span class="check">✓</span>
+        <div>
+          <h4>Encrypted in Transit</h4>
+          <p>All communication between CoChair and your systems uses TLS 1.2+ encryption. API credentials are stored with AES-256 encryption at rest.</p>
+        </div>
+      </div>
+      <div class="compliance-card">
+        <span class="check">✓</span>
+        <div>
+          <h4>Audit Trail</h4>
+          <p>Every decision made through CoChair is logged with timestamp, user, and action taken — supporting your institution's records retention requirements.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr />
+
+  <!-- CTA -->
+  <div class="cta-section">
+    <h2>Ready to see CoChair in action?</h2>
+    <p>Try the live demo — no login required. Or request a custom demo for your institution.</p>
+    <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-bottom:1.5rem;">
+      <a href="https://cephgate.ai" class="btn-primary" target="_blank">See CoChair Live →</a>
+      <a href="https://cephgate.ai/gmail-demo" class="btn-secondary" target="_blank">See it in Gmail →</a>
+    </div>
+    <p style="font-size:0.85rem;color:var(--muted);">Questions? <a href="mailto:chris@cephgate.ai" style="color:var(--accent);">chris@cephgate.ai</a></p>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <p style="margin-bottom:0.5rem;">
+      <a href="/">← Back to Cephgate</a>
+      &nbsp;·&nbsp;
+      <a href="https://cephgate.ai" target="_blank">Live Demo</a>
+      &nbsp;·&nbsp;
+      <a href="mailto:chris@cephgate.ai">Contact</a>
+    </p>
+    <p>Patent Pending — U.S. Application No. 19/632,163 &nbsp;·&nbsp; © 2026 Cephgate</p>
+  </footer>
+
+</body>
+</html>
