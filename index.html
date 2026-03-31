@@ -262,64 +262,37 @@
         <div class="dot green"></div>
         <span class="demo-url">cephgate.ai — CoChair live demo</span>
       </div>
-      <!-- Gmail-style mockup -->
-      <div style="display:grid;grid-template-columns:200px 1fr 220px;height:320px;font-family:-apple-system,sans-serif;font-size:12px;background:#fff;border-radius:0 0 8px 8px;overflow:hidden;">
-
-        <!-- Gmail left nav -->
-        <div style="background:#fff;padding:8px 0;border-right:1px solid #e0e0e0;">
-          <div style="margin:4px 8px 10px;padding:10px 16px;background:#c2e7ff;border-radius:16px;font-size:11px;font-weight:600;color:#001d35;">✏️ Compose</div>
-          <div style="padding:4px 16px;background:#d3e3fd;border-radius:0 16px 16px 0;margin-right:8px;font-weight:700;color:#202124;">📥 Inbox <span style="margin-left:auto;float:right;">3</span></div>
-          <div style="padding:4px 16px;color:#5f6368;">⭐ Starred</div>
-          <div style="padding:4px 16px;color:#5f6368;">📤 Sent</div>
-          <div style="margin:10px 8px 0;padding:8px;background:#e8f0fe;border-radius:8px;">
-            <div style="font-weight:700;color:#1c2b4a;font-size:11px;">CoChair <span style="color:#4da3ff;">●</span></div>
-            <div style="color:#5f6368;font-size:10px;">3 pending decisions</div>
-          </div>
+      <div class="demo-inner">
+        <div class="demo-chat">
+          <div class="demo-chat-label">AI Assistant</div>
+          <div class="chat-msg">How many open seats are in BIOL 301?</div>
+          <div class="chat-msg ai">BIOL 301 currently has <strong>2 seats remaining</strong>. Maria Rodriguez has completed all prerequisites with a 3.7 GPA. Recommend approval.</div>
+          <div class="chat-msg">What's the waitlist count?</div>
+          <div class="chat-msg ai">12 students on waitlist. Historically this section adds a seat 68% of the time by week 3.</div>
         </div>
-
-        <!-- Email reading pane -->
-        <div style="padding:14px 16px;border-right:1px solid #e0e0e0;overflow:hidden;">
-          <!-- Email list preview -->
-          <div style="border-bottom:1px solid #f1f3f4;padding-bottom:8px;margin-bottom:8px;">
-            <div style="display:flex;gap:6px;align-items:center;">
-              <div style="width:28px;height:28px;border-radius:50%;background:#1a73e8;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;flex-shrink:0;">M</div>
-              <div style="flex:1;min-width:0;">
-                <div style="font-weight:700;color:#202124;font-size:12px;">Maria Rodriguez</div>
-                <div style="color:#202124;font-size:11px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Permit request - BIOL-401 SEC-023</div>
-              </div>
-              <div style="color:#5f6368;font-size:10px;flex-shrink:0;">9:41 AM</div>
+        <div class="demo-inbox">
+          <div class="demo-inbox-label">Department Inbox</div>
+          <div class="inbox-row">
+            <span class="inbox-badge badge-high">HIGH</span>
+            <span style="flex:1; color: var(--text);">Course permit — Maria Rodriguez</span>
+          </div>
+          <div class="action-card">
+            <div class="action-card-title">⚡ AI Action Card · BIOL 301 Permit</div>
+            <div class="action-card-body">
+              Student meets all prerequisites · GPA 3.7 · Section has 2 seats · <strong>Recommendation: APPROVE</strong>
+            </div>
+            <div class="action-btns">
+              <button class="btn-approve">✓ Approve</button>
+              <button class="btn-deny">✗ Deny</button>
             </div>
           </div>
-          <!-- Open email -->
-          <div style="color:#202124;">
-            <div style="font-size:13px;font-weight:600;margin-bottom:6px;">Permit request - BIOL-401 SEC-023</div>
-            <div style="font-size:11px;color:#5f6368;margin-bottom:8px;">Maria Rodriguez &lt;m.rodriguez@nsu.edu&gt; → me</div>
-            <div style="font-size:11px;color:#202124;line-height:1.5;">Hi Dr. [advisor], I hope your week is going well! I'm writing because I tried to register for BIOL-401 but the section is at capacity. I've completed all prerequisites and really need this course...</div>
+          <div class="inbox-row" style="margin-top:0.5rem; opacity:0.6;">
+            <span class="inbox-badge badge-med">MED</span>
+            <span style="flex:1;">Adjunct contract — Fall 2026</span>
           </div>
-        </div>
-
-        <!-- CoChair sidebar -->
-        <div style="display:flex;flex-direction:column;background:#fff;">
-          <div style="background:#1c2b4a;padding:8px 10px;display:flex;align-items:center;gap:6px;">
-            <div style="width:18px;height:18px;background:#1a73e8;border-radius:3px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:10px;flex-shrink:0;">C</div>
-            <div>
-              <div style="font-size:11px;font-weight:700;color:#fff;">CoChair</div>
-              <div style="font-size:9px;color:#7a99cc;">by Cephgate</div>
-            </div>
-          </div>
-          <div style="padding:8px;flex:1;overflow:hidden;">
-            <div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:6px;padding:6px 8px;margin-bottom:6px;">
-              <div style="font-size:10px;font-weight:700;color:#15803d;">✅ Recommend: APPROVE</div>
-              <div style="font-size:9px;color:#374151;margin-top:2px;">Student meets all requirements.</div>
-            </div>
-            <div style="font-size:9px;color:#5f6368;margin-bottom:2px;">STUDENT</div>
-            <div style="font-size:10px;color:#202124;margin-bottom:1px;"><b>Maria Rodriguez</b>  ·  Junior</div>
-            <div style="font-size:9px;color:#5f6368;margin-bottom:6px;">GPA: 3.7  ·  Prereqs: ✓ Met</div>
-            <div style="font-size:9px;color:#5f6368;margin-bottom:2px;">OPEN ALTERNATIVES</div>
-            <div style="font-size:9px;color:#202124;margin-bottom:1px;">• SEC-024  TR 10am  ·  8 seats</div>
-            <div style="font-size:9px;color:#202124;margin-bottom:8px;">• SEC-025  MWF 2pm  ·  3 seats</div>
-            <button style="width:100%;padding:6px;background:#0f9d58;color:#fff;border:none;border-radius:4px;font-size:10px;font-weight:700;cursor:pointer;margin-bottom:4px;">✅  Grant Permit</button>
-            <button style="width:100%;padding:6px;background:#1a73e8;color:#fff;border:none;border-radius:4px;font-size:10px;font-weight:600;cursor:pointer;">✉️  Draft Reply</button>
+          <div class="inbox-row" style="opacity:0.4;">
+            <span class="inbox-badge badge-med">MED</span>
+            <span style="flex:1;">Room reservation — Irvin Hall 115</span>
           </div>
         </div>
       </div>
