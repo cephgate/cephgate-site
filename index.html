@@ -190,6 +190,11 @@
     @media (max-width: 600px) {
       .demo-inner { grid-template-columns: 1fr; }
       nav .patent-badge { display: none; }
+      /* Hide nav text links on mobile, keep only logo + CTA */
+      nav a[href="/payable"],
+      nav a[href="/cochair"] { display: none; }
+      .nav-cta { padding: 0.4rem 0.85rem; font-size: 0.8rem; white-space: nowrap; }
+      nav { padding: 0 1rem; }
     }
   </style>
 </head>
