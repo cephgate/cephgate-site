@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Payable — Powered by Cephgate</title>
+  <meta name="description" content="Payable turns vendor invoice emails into one-click QuickBooks entries. AI reads the invoice, checks your vendor history, flags issues, and creates the bill — right from Gmail."/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy: #0b1120;
+      --dark: #111827;
+      --card: #1a2540;
+      --teal: #0ea5e9;
+      --teal-dark: #0284c7;
+      --teal-glow: rgba(14,165,233,0.15);
+      --green: #2CA01C;
+      --green-dark: #1e7a14;
+      --green-glow: rgba(44,160,28,0.15);
+      --accent: #4da3ff;
+      --text: #f1f5f9;
+      --muted: #94a3b8;
+      --border: rgba(255,255,255,0.07);
+      --check: #22c55e;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--navy); color: var(--text); line-height: 1.6; }
+
+    nav { position: sticky; top: 0; z-index: 100; background: rgba(11,17,32,0.95); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); padding: 0 2rem; height: 60px; display: flex; align-items: center; justify-content: space-between; }
+    .logo { display: flex; align-items: center; gap: 0.5rem; font-size: 1.1rem; font-weight: 700; color: var(--text); text-decoration: none; }
+    .nav-links { display: flex; align-items: center; gap: 1.5rem; }
+    .nav-link { color: var(--muted); text-decoration: none; font-size: 0.9rem; transition: color 0.2s; }
+    .nav-link:hover { color: var(--text); }
+    .nav-cta { background: var(--green); color: #fff; padding: 0.45rem 1.1rem; border-radius: 6px; font-size: 0.85rem; font-weight: 600; text-decoration: none; transition: background 0.2s; }
+    .nav-cta:hover { background: var(--green-dark); }
+
+    .hero { max-width: 800px; margin: 0 auto; padding: 5rem 2rem 3rem; text-align: center; }
+    .hero-eyebrow { display: inline-block; background: var(--green-glow); border: 1px solid rgba(44,160,28,0.3); color: var(--green); font-size: 0.8rem; font-weight: 600; padding: 4px 14px; border-radius: 20px; margin-bottom: 1.25rem; letter-spacing: 0.04em; text-transform: uppercase; }
+    .hero h1 { font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; line-height: 1.15; margin-bottom: 1.25rem; }
+    .hero h1 span { color: var(--green); }
+    .hero-sub { font-size: 1.1rem; color: var(--muted); max-width: 600px; margin: 0 auto 2rem; }
+    .hero-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .btn-primary { background: var(--green); color: #fff; padding: 0.75rem 1.75rem; border-radius: 8px; font-size: 0.95rem; font-weight: 600; text-decoration: none; transition: background 0.2s, transform 0.15s; }
+    .btn-primary:hover { background: var(--green-dark); transform: translateY(-1px); }
+    .btn-secondary { background: transparent; color: var(--green); padding: 0.75rem 1.75rem; border-radius: 8px; border: 1px solid var(--green); font-size: 0.95rem; font-weight: 600; text-decoration: none; transition: all 0.2s; }
+    .btn-secondary:hover { border-color: var(--green-dark); color: var(--green-dark); }
+
+    section { max-width: 1000px; margin: 0 auto; padding: 4rem 2rem; }
+    .section-label { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--green); margin-bottom: 0.75rem; }
+    .section-title { font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 700; margin-bottom: 1rem; }
+    .section-sub { color: var(--muted); font-size: 1rem; max-width: 640px; margin-bottom: 2.5rem; }
+
+    .feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+    .feature-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; }
+    .feature-icon { font-size: 1.6rem; margin-bottom: 0.75rem; }
+    .feature-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--text); }
+    .feature-card p { font-size: 0.875rem; color: var(--muted); line-height: 1.6; }
+
+    .steps { display: flex; flex-direction: column; gap: 1.5rem; }
+    .step { display: flex; gap: 1.25rem; align-items: flex-start; }
+    .step-num { width: 36px; height: 36px; border-radius: 50%; background: var(--green-glow); border: 1px solid rgba(44,160,28,0.4); color: var(--green); font-weight: 700; font-size: 0.9rem; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; }
+    .step-body h4 { font-size: 1rem; font-weight: 700; margin-bottom: 0.3rem; }
+    .step-body p { color: var(--muted); font-size: 0.9rem; }
+
+    .flag-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; }
+    .flag-card { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 1.25rem; }
+    .flag-badge { display: inline-block; font-size: 0.7rem; font-weight: 700; padding: 2px 8px; border-radius: 20px; margin-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 0.04em; }
+    .badge-red { background: rgba(239,68,68,0.15); color: #f87171; }
+    .badge-amber { background: rgba(245,158,11,0.15); color: #fbbf24; }
+    .badge-green { background: var(--green-glow); color: var(--green); }
+    .flag-card h4 { font-size: 0.9rem; font-weight: 700; margin-bottom: 0.3rem; }
+    .flag-card p { font-size: 0.8rem; color: var(--muted); }
+
+    .integrations { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+    .int-badge { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 0.5rem 1rem; font-size: 0.85rem; color: var(--text); font-weight: 500; display: flex; align-items: center; gap: 0.5rem; }
+    .int-badge.primary { border-color: rgba(44,160,28,0.4); color: var(--green); }
+
+    .compliance-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.25rem; }
+    .compliance-card { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 1.25rem; display: flex; gap: 0.75rem; align-items: flex-start; }
+    .check { color: var(--check); font-size: 1.1rem; margin-top: 2px; flex-shrink: 0; }
+    .compliance-card h4 { font-size: 0.9rem; font-weight: 700; margin-bottom: 0.25rem; }
+    .compliance-card p { font-size: 0.8rem; color: var(--muted); }
+
+    .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; }
+    .pricing-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 1.75rem; }
+    .pricing-card.featured { border-color: rgba(44,160,28,0.5); position: relative; }
+    .pricing-tag { position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--green); color: #fff; font-size: 0.7rem; font-weight: 700; padding: 3px 12px; border-radius: 20px; white-space: nowrap; }
+    .price { font-size: 2.5rem; font-weight: 800; color: var(--text); margin: 0.5rem 0; }
+    .price span { font-size: 1rem; color: var(--muted); font-weight: 400; }
+    .pricing-card ul { list-style: none; margin-top: 1rem; display: flex; flex-direction: column; gap: 0.5rem; }
+    .pricing-card li { font-size: 0.875rem; color: var(--muted); display: flex; align-items: center; gap: 0.5rem; }
+    .pricing-card li::before { content: '✓'; color: var(--check); font-weight: 700; flex-shrink: 0; }
+
+    .cta-section { text-align: center; padding: 4rem 2rem; }
+    .cta-section h2 { font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 700; margin-bottom: 1rem; }
+    .cta-section p { color: var(--muted); margin-bottom: 2rem; }
+
+    hr { border: none; border-top: 1px solid var(--border); }
+    footer { border-top: 1px solid var(--border); padding: 1.5rem 2rem; text-align: center; font-size: 0.8rem; color: var(--muted); }
+    footer a { color: var(--accent); text-decoration: none; }
+
+    @media (max-width: 600px) { .nav-links .nav-link { display: none; } section { padding: 3rem 1.25rem; } }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="/" class="logo">🐙 Cephgate</a>
+    <div class="nav-links">
+      <a href="#features" class="nav-link">Features</a>
+      <a href="#how-it-works" class="nav-link">How It Works</a>
+      <a href="#pricing" class="nav-link">Pricing</a>
+      <a href="https://cephgate.ai/payable-demo" class="nav-cta" target="_blank">See Demo →</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <span class="hero-eyebrow">Gmail + QuickBooks · Powered by Cephgate</span>
+    <h1>Never manually enter <span>a bill again</span></h1>
+    <p class="hero-sub">Payable reads vendor invoice emails, cross-references your QuickBooks data, flags issues, and creates the bill with one tap — without leaving Gmail.</p>
+    <div class="hero-actions">
+      <a href="https://cephgate.ai/payable-demo" class="btn-primary" target="_blank">See Payable Live →</a>
+      <a href="/request-demo?v=smb_expense" class="btn-secondary">Request a Demo</a>
+    </div>
+  </div>
+
+  <hr />
+
+  <!-- THE PROBLEM -->
+  <section>
+    <div class="section-label">The Problem</div>
+    <h2 class="section-title">Your AP workflow today: 8 steps, 15 minutes, per invoice</h2>
+    <p class="section-sub">Every vendor invoice means opening QuickBooks in another tab, searching for the vendor, checking the PO, verifying the amount, entering it manually, routing for approval, and scheduling payment.</p>
+    <div class="feature-grid">
+      <div class="feature-card">
+        <div class="feature-icon">⏱️</div>
+        <h3>10–15 min per invoice</h3>
+        <p>Manual data entry from email to QuickBooks for every bill. 50 invoices/month = 8+ hours of pure data entry.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🔁</div>
+        <h3>Duplicate payments</h3>
+        <p>Vendors re-send invoices. Without automated duplicate detection, the same bill gets paid twice.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">💸</div>
+        <h3>Late fees & missed discounts</h3>
+        <p>Invoices sit in inboxes for days. Net-30 terms expire, late fees kick in, early-pay discounts are missed.</p>
+      </div>
+    </div>
+  </section>
+
+  <hr />
+
+  <!-- FEATURES -->
+  <section id="features">
+    <div class="section-label">What Payable Does</div>
+    <h2 class="section-title">From email to QuickBooks in one tap</h2>
+    <p class="section-sub">Payable lives in your Gmail sidebar. Every vendor invoice email gets an AI action card — no login, no tab switching.</p>
+    <div class="feature-grid">
+      <div class="feature-card">
+        <div class="feature-icon">📬</div>
+        <h3>Email-Triggered Intelligence</h3>
+        <p>When a vendor invoice arrives, Payable reads the email and any PDF, image, or Word attachment automatically.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🔗</div>
+        <h3>Live QuickBooks Lookup</h3>
+        <p>Pulls real vendor history, open POs, and account data directly from your QuickBooks — no manual entry.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🤖</div>
+        <h3>AI Analysis</h3>
+        <p>Detects duplicates, flags fraud signals (bank account changes), catches amount mismatches, identifies new vendors.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">✅</div>
+        <h3>One-Tap Bill Creation</h3>
+        <p>Approve and Payable creates the Bill in QuickBooks with the right vendor, category, amount, and due date — instantly.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🔁</div>
+        <h3>Make Recurring</h3>
+        <p>Detect recurring bills (rent, subscriptions, utilities) and set them up as recurring transactions in QuickBooks.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">⬆️</div>
+        <h3>Approval Routing</h3>
+        <p>Bills over $5,000 automatically escalate to your CFO or Department Head with the full analysis attached.</p>
+      </div>
+    </div>
+  </section>
+
+  <hr />
+
+  <!-- FLAGS -->
+  <section>
+    <div class="section-label">Smart Detection</div>
+    <h2 class="section-title">Every invoice checked before you approve</h2>
+    <p class="section-sub">Payable runs 8 checks on every invoice before showing you the action card.</p>
+    <div class="flag-grid">
+      <div class="flag-card">
+        <span class="flag-badge badge-red">🚨 Critical</span>
+        <h4>Duplicate Invoice</h4>
+        <p>Same invoice number already paid — blocks approval automatically.</p>
+      </div>
+      <div class="flag-card">
+        <span class="flag-badge badge-red">🚨 Critical</span>
+        <h4>Bank Account Changed</h4>
+        <p>Vendor's payment details changed since last invoice — fraud signal flagged.</p>
+      </div>
+      <div class="flag-card">
+        <span class="flag-badge badge-amber">⚠️ Warning</span>
+        <h4>Amount Exceeds PO</h4>
+        <p>Invoice amount is higher than the purchase order on file.</p>
+      </div>
+      <div class="flag-card">
+        <span class="flag-badge badge-amber">⚠️ Warning</span>
+        <h4>Missing PO</h4>
+        <p>No purchase order found — may indicate unauthorized purchase.</p>
+      </div>
+      <div class="flag-card">
+        <span class="flag-badge badge-amber">⚠️ Warning</span>
+        <h4>New Vendor</h4>
+        <p>First invoice from this vendor — review before adding to QuickBooks.</p>
+      </div>
+      <div class="flag-card">
+        <span class="flag-badge badge-amber">⚠️ Warning</span>
+        <h4>Overdue Balance</h4>
+        <p>Vendor has existing unpaid invoices — review before adding more.</p>
+      </div>
+      <div class="flag-card">
+        <span class="flag-badge badge-red">⏰ Urgent</span>
+        <h4>Late Fee Risk</h4>
+        <p>Payment due in 48 hours — late fee will apply if not processed today.</p>
+      </div>
+      <div class="flag-card">
+        <span class="flag-badge badge-green">✅ Clean</span>
+        <h4>All Checks Passed</h4>
+        <p>Known vendor, amount matches PO, no duplicates — instant one-tap approve.</p>
+      </div>
+    </div>
+  </section>
+
+  <hr />
+
+  <!-- HOW IT WORKS -->
+  <section id="how-it-works">
+    <div class="section-label">How It Works</div>
+    <h2 class="section-title">The email IS the trigger</h2>
+    <p class="section-sub">Payable works entirely from your Gmail inbox. No separate login, no workflow migration.</p>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <h4>Vendor invoice arrives in Gmail</h4>
+          <p>PDF, image, Word doc, or text — Payable detects it and parses the invoice automatically using AI.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <h4>Payable queries your QuickBooks</h4>
+          <p>Vendor history, open POs, account balances, chart of accounts — all pulled live in seconds.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <h4>Action card appears in your Gmail sidebar</h4>
+          <p>Vendor, amount, category, due date, flags — everything pre-filled. Green card = safe to approve instantly.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-body">
+          <h4>One tap creates the Bill in QuickBooks</h4>
+          <p>Bill created with correct vendor, category, amount, due date. Or set as recurring. Or escalate to CFO.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr />
+
+  <!-- INTEGRATIONS -->
+  <section>
+    <div class="section-label">Integrations</div>
+    <h2 class="section-title">Works with what you already use</h2>
+    <p class="section-sub">No migration required. Connects to your existing tools in minutes.</p>
+    <div class="integrations">
+      <span class="int-badge primary">✓ QuickBooks Online</span>
+      <span class="int-badge primary">✓ Gmail</span>
+      <span class="int-badge">Google Workspace</span>
+      <span class="int-badge">PDF Invoices</span>
+      <span class="int-badge">Scanned Images</span>
+      <span class="int-badge">Word Documents</span>
+      <span class="int-badge">Xero <em style="font-size:0.8em;color:var(--muted)">(coming soon)</em></span>
+      <span class="int-badge">Outlook <em style="font-size:0.8em;color:var(--muted)">(coming soon)</em></span>
+    </div>
+  </section>
+
+  <hr />
+
+  <!-- PRICING -->
+  <section id="pricing">
+    <div class="section-label">Pricing</div>
+    <h2 class="section-title">Simple, transparent pricing</h2>
+    <p class="section-sub">No setup fees. No per-invoice charges. Cancel anytime.</p>
+    <div class="pricing-grid">
+      <div class="pricing-card">
+        <div style="font-weight:700;font-size:1.1rem;margin-bottom:0.25rem;">Starter</div>
+        <div class="price">$29<span>/mo</span></div>
+        <div style="font-size:0.85rem;color:var(--muted);margin-bottom:1rem;">For solo AP or small teams</div>
+        <ul>
+          <li>Unlimited invoice emails</li>
+          <li>PDF, image & Word parsing</li>
+          <li>QuickBooks bill creation</li>
+          <li>Duplicate detection</li>
+          <li>1 user</li>
+        </ul>
+        <a href="/request-demo?v=smb_expense" style="display:block;margin-top:1.5rem;padding:0.65rem;background:var(--card);border:1px solid var(--border);border-radius:8px;text-align:center;color:var(--text);text-decoration:none;font-size:0.9rem;font-weight:600;">Get Started</a>
+      </div>
+      <div class="pricing-card featured">
+        <div class="pricing-tag">Most Popular</div>
+        <div style="font-weight:700;font-size:1.1rem;margin-bottom:0.25rem;">Growth</div>
+        <div class="price">$79<span>/mo</span></div>
+        <div style="font-size:0.85rem;color:var(--muted);margin-bottom:1rem;">For growing businesses</div>
+        <ul>
+          <li>Everything in Starter</li>
+          <li>Approval routing (CFO escalation)</li>
+          <li>Recurring bill automation</li>
+          <li>Up to 5 users</li>
+          <li>Custom QB field mapping</li>
+        </ul>
+        <a href="/request-demo?v=smb_expense" style="display:block;margin-top:1.5rem;padding:0.65rem;background:var(--green);border:none;border-radius:8px;text-align:center;color:#fff;text-decoration:none;font-size:0.9rem;font-weight:700;">Get Started</a>
+      </div>
+      <div class="pricing-card">
+        <div style="font-weight:700;font-size:1.1rem;margin-bottom:0.25rem;">Enterprise</div>
+        <div class="price" style="font-size:1.5rem;padding-top:0.5rem;">Custom</div>
+        <div style="font-size:0.85rem;color:var(--muted);margin-bottom:1rem;">For larger teams</div>
+        <ul>
+          <li>Everything in Growth</li>
+          <li>Unlimited users</li>
+          <li>NetSuite / Xero integration</li>
+          <li>Outlook support</li>
+          <li>Dedicated onboarding</li>
+        </ul>
+        <a href="mailto:chris@cephgate.ai" style="display:block;margin-top:1.5rem;padding:0.65rem;background:var(--card);border:1px solid var(--border);border-radius:8px;text-align:center;color:var(--text);text-decoration:none;font-size:0.9rem;font-weight:600;">Contact Sales</a>
+      </div>
+    </div>
+  </section>
+
+  <hr />
+
+  <!-- CTA -->
+  <div class="cta-section">
+    <h2>Stop entering bills manually</h2>
+    <p>See how Payable handles your invoices — no install required for the demo.</p>
+    <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-bottom:1.5rem;">
+      <a href="https://cephgate.ai/payable-demo" class="btn-primary" target="_blank">See Payable Live →</a>
+      <a href="/request-demo?v=smb_expense" class="btn-secondary">Request a Custom Demo</a>
+    </div>
+    <p style="font-size:0.85rem;color:var(--muted);">Questions? <a href="mailto:chris@cephgate.ai" style="color:var(--accent);">chris@cephgate.ai</a></p>
+  </div>
+
+  <footer>
+    <p style="margin-bottom:0.5rem;">
+      <a href="/">← Back to Cephgate</a>
+      &nbsp;·&nbsp;
+      <a href="/cochair">CoChair for Higher Ed</a>
+      &nbsp;·&nbsp;
+      <a href="https://cephgate.ai/payable-demo" target="_blank">Live Demo</a>
+      &nbsp;·&nbsp;
+      <a href="mailto:chris@cephgate.ai">Contact</a>
+    </p>
+    <p>Patent Pending — U.S. Application No. 19/632,163 &nbsp;·&nbsp; © 2026 Cephgate</p>
+  </footer>
+
+</body>
+</html>
