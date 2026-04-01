@@ -199,6 +199,11 @@
     <h2 class="section-title">Every invoice checked before you approve</h2>
     <p class="section-sub">Payable runs 8 checks on every invoice before showing you the action card.</p>
     <div class="flag-grid">
+      <div class="flag-card" style="border-color:rgba(44,160,28,0.3);">
+        <span class="flag-badge badge-green">✅ Most Common</span>
+        <h4>All Checks Passed</h4>
+        <p>Known vendor, amount matches PO, no duplicates — green card, instant one-tap approve.</p>
+      </div>
       <div class="flag-card">
         <span class="flag-badge badge-red">🚨 Critical</span>
         <h4>Duplicate Invoice</h4>
@@ -208,6 +213,11 @@
         <span class="flag-badge badge-red">🚨 Critical</span>
         <h4>Bank Account Changed</h4>
         <p>Vendor's payment details changed since last invoice — fraud signal flagged.</p>
+      </div>
+      <div class="flag-card">
+        <span class="flag-badge badge-red">⏰ Urgent</span>
+        <h4>Late Fee Risk</h4>
+        <p>Payment due in 48 hours — late fee will apply if not processed today.</p>
       </div>
       <div class="flag-card">
         <span class="flag-badge badge-amber">⚠️ Warning</span>
@@ -228,16 +238,6 @@
         <span class="flag-badge badge-amber">⚠️ Warning</span>
         <h4>Overdue Balance</h4>
         <p>Vendor has existing unpaid invoices — review before adding more.</p>
-      </div>
-      <div class="flag-card">
-        <span class="flag-badge badge-red">⏰ Urgent</span>
-        <h4>Late Fee Risk</h4>
-        <p>Payment due in 48 hours — late fee will apply if not processed today.</p>
-      </div>
-      <div class="flag-card">
-        <span class="flag-badge badge-green">✅ Clean</span>
-        <h4>All Checks Passed</h4>
-        <p>Known vendor, amount matches PO, no duplicates — instant one-tap approve.</p>
       </div>
     </div>
   </section>
