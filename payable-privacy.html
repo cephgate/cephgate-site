@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy — Payable by Cephgate</title>
+  <style>
+    :root {
+      --navy: #0b1120;
+      --dark: #111827;
+      --card: #1a2540;
+      --teal: #0ea5e9;
+      --text: #f1f5f9;
+      --muted: #94a3b8;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: var(--navy);
+      color: var(--text);
+      line-height: 1.7;
+    }
+    header {
+      background: var(--dark);
+      border-bottom: 1px solid rgba(14,165,233,0.2);
+      padding: 16px 32px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    header a {
+      color: var(--teal);
+      text-decoration: none;
+      font-size: 14px;
+    }
+    header span { color: var(--muted); font-size: 14px; }
+    .container {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 60px 32px 80px;
+    }
+    h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+    .meta {
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 48px;
+    }
+    h2 {
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--teal);
+      margin: 36px 0 12px;
+    }
+    p { color: #cbd5e1; margin-bottom: 16px; }
+    ul {
+      color: #cbd5e1;
+      padding-left: 24px;
+      margin-bottom: 16px;
+    }
+    ul li { margin-bottom: 8px; }
+    a { color: var(--teal); }
+    .contact-box {
+      background: var(--card);
+      border: 1px solid rgba(14,165,233,0.2);
+      border-radius: 12px;
+      padding: 24px;
+      margin-top: 40px;
+    }
+    .contact-box p { margin: 0; }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="https://cephgate.com">← cephgate.com</a>
+    <span>/</span>
+    <span>Payable Privacy Policy</span>
+  </header>
+
+  <div class="container">
+    <h1>Privacy Policy</h1>
+    <p class="meta">Payable by Cephgate &nbsp;·&nbsp; Effective Date: April 3, 2026 &nbsp;·&nbsp; Last Updated: April 3, 2026</p>
+
+    <p>This Privacy Policy describes how Cephgate ("we," "us," or "our") collects, uses, and protects information when you use Payable, our Gmail add-on for accounts payable automation ("the Service"). By using Payable, you agree to the practices described in this policy.</p>
+
+    <h2>1. Information We Collect</h2>
+    <p>Payable accesses the following information solely to provide the Service:</p>
+    <ul>
+      <li><strong>Gmail email content</strong> — subject lines, email body text, and file attachments (PDFs, images, DOCX files) from emails you open while using Payable. We only process emails you actively open; we do not scan your entire inbox.</li>
+      <li><strong>QuickBooks data</strong> — vendor records, purchase orders, payment accounts, and payment methods from your connected QuickBooks Online account, used to match and route invoices.</li>
+      <li><strong>Google account email address</strong> — used to associate your QuickBooks connection with your account.</li>
+      <li><strong>User preferences</strong> — settings you configure within Payable (approval thresholds, payment defaults, categories), stored locally in Google Apps Script User Properties.</li>
+    </ul>
+
+    <h2>2. How We Use Your Information</h2>
+    <ul>
+      <li>Analyze invoice and receipt attachments using AI (Anthropic Claude) to extract vendor, amount, and payment details</li>
+      <li>Match invoices to existing vendors and purchase orders in your QuickBooks account</li>
+      <li>Create bills, expenses, and vendor records in QuickBooks on your behalf when you click Save</li>
+      <li>Attach invoice documents to QuickBooks records for audit purposes</li>
+    </ul>
+    <p>We do not use your data to train AI models. We do not sell, rent, or share your data with third parties for marketing purposes.</p>
+
+    <h2>3. Data Storage and Retention</h2>
+    <ul>
+      <li><strong>QuickBooks OAuth tokens</strong> are stored encrypted in Upstash Redis (a secure, SOC 2 compliant service) and are used solely to authenticate API calls to QuickBooks on your behalf. Tokens are automatically refreshed and expire when you disconnect.</li>
+      <li><strong>Email content and attachments</strong> are processed in memory during analysis and are not stored on our servers after the API response is returned.</li>
+      <li><strong>User preferences</strong> are stored in Google Apps Script User Properties, which are tied to your Google account and are not accessible to Cephgate.</li>
+    </ul>
+
+    <h2>4. Third-Party Services</h2>
+    <p>Payable integrates with the following third-party services to provide its functionality:</p>
+    <ul>
+      <li><strong>Anthropic Claude</strong> — AI analysis of invoice content. Data sent to Anthropic is subject to <a href="https://www.anthropic.com/privacy" target="_blank">Anthropic's Privacy Policy</a>. Anthropic does not use API data to train models.</li>
+      <li><strong>Intuit QuickBooks Online</strong> — accounting data access and record creation. Subject to <a href="https://www.intuit.com/privacy/statement/" target="_blank">Intuit's Privacy Statement</a>.</li>
+      <li><strong>Vercel</strong> — API hosting. Subject to <a href="https://vercel.com/legal/privacy-policy" target="_blank">Vercel's Privacy Policy</a>.</li>
+      <li><strong>Upstash</strong> — encrypted token storage. Subject to <a href="https://upstash.com/trust/privacy.pdf" target="_blank">Upstash's Privacy Policy</a>.</li>
+    </ul>
+
+    <h2>5. Google API Scopes</h2>
+    <p>Payable requests the following Google API scopes, limited to what is strictly necessary:</p>
+    <ul>
+      <li><code>gmail.addons.current.message.readonly</code> — read the currently open email and its attachments</li>
+      <li><code>gmail.readonly</code> — required to access email attachments for saving to QuickBooks</li>
+      <li><code>gmail.addons.execute</code> — run the add-on in Gmail</li>
+      <li><code>userinfo.email</code> — identify your Google account to associate your QuickBooks connection</li>
+      <li><code>script.storage</code> — store your preferences locally</li>
+      <li><code>drive.file</code> — convert DOCX invoice attachments to PDF for analysis</li>
+    </ul>
+    <p>Payable's use of Google user data complies with the <a href="https://developers.google.com/terms/api-services-user-data-policy" target="_blank">Google API Services User Data Policy</a>, including the Limited Use requirements.</p>
+
+    <h2>6. Security</h2>
+    <p>We implement industry-standard security measures including:</p>
+    <ul>
+      <li>Encrypted token storage (AES-256) for all OAuth credentials</li>
+      <li>HTTPS-only API communication</li>
+      <li>Shared secret authentication between the Gmail add-on and our API servers</li>
+      <li>No logging of email content or attachment data</li>
+    </ul>
+
+    <h2>7. Your Rights and Controls</h2>
+    <ul>
+      <li><strong>Disconnect QuickBooks</strong> — you can disconnect at any time from Payable Settings. This immediately revokes our access to your QuickBooks data and deletes your stored tokens.</li>
+      <li><strong>Uninstall</strong> — removing the Payable add-on from Gmail stops all data processing. Your preferences stored in Apps Script User Properties are deleted automatically.</li>
+      <li><strong>Data deletion</strong> — to request deletion of any data associated with your account, email us at privacy@cephgate.com.</li>
+    </ul>
+
+    <h2>8. Children's Privacy</h2>
+    <p>Payable is designed for business use and is not directed at children under 13. We do not knowingly collect personal information from children.</p>
+
+    <h2>9. Changes to This Policy</h2>
+    <p>We may update this Privacy Policy from time to time. We will notify users of material changes by updating the "Last Updated" date above. Continued use of the Service after changes constitutes acceptance of the updated policy.</p>
+
+    <h2>10. Contact</h2>
+    <div class="contact-box">
+      <p>Questions about this Privacy Policy or your data? Contact us at:<br><br>
+      <strong>Cephgate</strong><br>
+      101 Pine Brook Rd, Lincoln Park, NJ 07035<br>
+      <a href="mailto:privacy@cephgate.com">privacy@cephgate.com</a></p>
+    </div>
+  </div>
+</body>
+</html>
