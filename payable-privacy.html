@@ -97,18 +97,25 @@
     </ul>
 
     <h2>2. How We Use Your Information</h2>
+    <p><strong>AI Processing Disclosure:</strong> When you open an email in Gmail while using Payable, the following information from that email is sent to Anthropic's Claude AI model for analysis:</p>
     <ul>
-      <li>Analyze invoice and receipt attachments using AI (Anthropic Claude) to extract vendor, amount, and payment details</li>
+      <li>The email subject line</li>
+      <li>The email body text (up to 2,000 characters)</li>
+      <li>Any invoice, receipt, or document attachments (PDFs, images, Word documents)</li>
+    </ul>
+    <p>This data is transmitted to Anthropic's API servers to extract financial information such as vendor name, invoice number, amount, payment terms, and vendor contact details. <strong>Only emails you actively open while the Payable sidebar is active are processed.</strong> We do not scan, read, or transmit your entire inbox.</p>
+    <p>We also use your information to:</p>
+    <ul>
       <li>Match invoices to existing vendors and purchase orders in your QuickBooks account</li>
       <li>Create bills, expenses, and vendor records in QuickBooks on your behalf when you click Save</li>
       <li>Attach invoice documents to QuickBooks records for audit purposes</li>
     </ul>
-    <p>We do not use your data to train AI models. We do not sell, rent, or share your data with third parties for marketing purposes.</p>
+    <p><strong>AI model training:</strong> We do not use your data to train AI models. Anthropic's API usage policies prohibit training on API data. We do not sell, rent, or share your data with third parties for marketing purposes.</p>
 
     <h2>3. Data Storage and Retention</h2>
     <ul>
       <li><strong>QuickBooks OAuth tokens</strong> are stored encrypted in Upstash Redis (a secure, SOC 2 compliant service) and are used solely to authenticate API calls to QuickBooks on your behalf. Tokens are automatically refreshed and expire when you disconnect.</li>
-      <li><strong>Email content and attachments</strong> are processed in memory during analysis and are not stored on our servers after the API response is returned.</li>
+      <li><strong>Email content and attachments</strong> are transmitted to Anthropic's Claude API for analysis and are not stored on our servers. Anthropic processes this data per their <a href="https://www.anthropic.com/privacy" target="_blank">Privacy Policy</a> and does not retain API request data for model training.</li>
       <li><strong>User preferences</strong> are stored in Google Apps Script User Properties, which are tied to your Google account and are not accessible to Cephgate.</li>
     </ul>
 
