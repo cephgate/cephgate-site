@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Support — Payable by Cephgate</title>
+  <meta name="description" content="Get help with Payable — the AI-powered accounts payable Gmail add-on."/>
+  <style>
+    :root {
+      --navy: #0b1120;
+      --dark: #111827;
+      --card: #1a2540;
+      --teal: #0ea5e9;
+      --text: #f1f5f9;
+      --muted: #94a3b8;
+      --border: rgba(255,255,255,0.07);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: var(--navy);
+      color: var(--text);
+      line-height: 1.7;
+    }
+    header {
+      background: var(--dark);
+      border-bottom: 1px solid rgba(14,165,233,0.2);
+      padding: 16px 32px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    header img { width: 32px; height: 32px; border-radius: 6px; }
+    header a { color: var(--text); text-decoration: none; font-weight: 600; font-size: 18px; }
+    header span { color: var(--muted); font-size: 14px; margin-left: 8px; }
+    .container { max-width: 860px; margin: 0 auto; padding: 48px 24px 80px; }
+    h1 { font-size: 32px; font-weight: 700; margin-bottom: 8px; }
+    .subtitle { color: var(--muted); font-size: 17px; margin-bottom: 48px; }
+    h2 { font-size: 20px; font-weight: 600; margin: 40px 0 16px; color: var(--teal); }
+    h3 { font-size: 16px; font-weight: 600; margin: 24px 0 8px; color: var(--text); }
+    p { color: #cbd5e1; margin-bottom: 12px; }
+    ul, ol { color: #cbd5e1; padding-left: 20px; margin-bottom: 12px; }
+    li { margin-bottom: 6px; }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 28px 32px;
+      margin-bottom: 24px;
+    }
+    .step {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 20px;
+      align-items: flex-start;
+    }
+    .step-num {
+      background: var(--teal);
+      color: #fff;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 13px;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .step-body h3 { margin: 0 0 4px; }
+    .step-body p { margin: 0; }
+    .faq-item { margin-bottom: 24px; }
+    .faq-q { font-weight: 600; color: var(--text); margin-bottom: 6px; }
+    .faq-a { color: #94a3b8; }
+    form { display: flex; flex-direction: column; gap: 16px; }
+    label { font-size: 14px; color: var(--muted); margin-bottom: 4px; display: block; }
+    input, select, textarea {
+      width: 100%;
+      background: #0f1829;
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 8px;
+      padding: 10px 14px;
+      color: var(--text);
+      font-size: 15px;
+      font-family: inherit;
+    }
+    input:focus, select:focus, textarea:focus {
+      outline: none;
+      border-color: var(--teal);
+    }
+    textarea { min-height: 120px; resize: vertical; }
+    button[type="submit"] {
+      background: var(--teal);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      padding: 12px 28px;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      align-self: flex-start;
+    }
+    button[type="submit"]:hover { background: #0284c7; }
+    .contact-direct {
+      margin-top: 16px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .contact-direct a { color: var(--teal); text-decoration: none; }
+    footer {
+      text-align: center;
+      padding: 32px;
+      color: var(--muted);
+      font-size: 13px;
+      border-top: 1px solid var(--border);
+    }
+    footer a { color: var(--muted); text-decoration: none; margin: 0 8px; }
+    footer a:hover { color: var(--teal); }
+    .badge {
+      display: inline-block;
+      background: rgba(14,165,233,0.12);
+      color: var(--teal);
+      border-radius: 4px;
+      padding: 2px 8px;
+      font-size: 12px;
+      font-weight: 600;
+      margin-left: 8px;
+      vertical-align: middle;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <img src="/payable-icon.png" alt="Payable"/>
+  <a href="https://cephgate.com">Cephgate</a>
+  <span>/ Support</span>
+</header>
+
+<div class="container">
+  <h1>Payable Support</h1>
+  <p class="subtitle">Get help setting up Payable, using the add-on, and connecting QuickBooks.</p>
+
+  <!-- ── GETTING STARTED ── -->
+  <h2>Getting Started</h2>
+  <div class="card">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-body">
+        <h3>Install the Gmail Add-on</h3>
+        <p>Visit the Google Workspace Marketplace and search for "Payable by Cephgate." Click Install and grant the requested permissions. Payable only accesses emails you actively open — it never scans your inbox.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-body">
+        <h3>Connect QuickBooks</h3>
+        <p>Open Gmail and click the Payable icon in the right sidebar. On the home card, tap <strong>Connect QuickBooks →</strong> and follow the Intuit authorization flow. You'll be redirected back to Gmail when complete.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-body">
+        <h3>Open an Invoice Email</h3>
+        <p>Open any email containing an invoice or receipt — PDF, image, or Word document attachment. Payable will automatically detect it and begin analysis. Results appear in the sidebar within 10–20 seconds.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <div class="step-body">
+        <h3>Review and Save</h3>
+        <p>Review the extracted vendor, amount, category, and date. Then tap <strong>Save as Bill</strong> or <strong>Record Expense</strong> to push it directly to QuickBooks. A confirmation with a link to the QB record appears when complete.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── USING THE ADD-ON ── -->
+  <h2>Using Payable</h2>
+  <div class="card">
+    <h3>Supported Document Types</h3>
+    <ul>
+      <li><strong>PDF invoices and receipts</strong> — vendor invoices, receipts, statements</li>
+      <li><strong>Image attachments</strong> — JPG/PNG photos of physical receipts or scanned documents</li>
+      <li><strong>Word documents (.docx)</strong> — invoices or receipts sent as Word files</li>
+    </ul>
+
+    <h3>What Payable Extracts</h3>
+    <ul>
+      <li>Vendor name, email, phone, and address</li>
+      <li>Invoice number or receipt number</li>
+      <li>Total amount (using the correct total, not subtotals or line item rates)</li>
+      <li>Invoice date and due date</li>
+      <li>Payment terms (e.g. Net 30)</li>
+      <li>Suggested expense category</li>
+      <li>Payment method and last 4 digits (for credit card receipts)</li>
+    </ul>
+
+    <h3>Bills vs. Expenses</h3>
+    <p><strong>Save as Bill</strong> — use for unpaid vendor invoices with a due date. Creates a Bill in QuickBooks Accounts Payable. Requires QuickBooks Essentials or higher.</p>
+    <p><strong>Record Expense</strong> — use for receipts and already-paid charges. Creates an Expense in QuickBooks. Available on all QuickBooks plans including Simple Start.</p>
+    <p><em>Note: If your QuickBooks plan doesn't support Bills, Payable will automatically save as an Expense instead.</em></p>
+
+    <h3>New Vendors</h3>
+    <p>If a vendor isn't in your QuickBooks, Payable will offer to add them automatically using the contact information extracted from the document. Review the pre-filled details and tap <strong>Add Vendor to QuickBooks</strong> before saving the bill or expense.</p>
+  </div>
+
+  <!-- ── SETTINGS ── -->
+  <h2>Settings Guide</h2>
+  <div class="card">
+    <h3>Opening Settings</h3>
+    <p>From the Payable home card (visible when no email is open), tap the <strong>⚙️ Settings</strong> button. Use the native back arrow in the sidebar header to return.</p>
+
+    <h3>Approval Threshold</h3>
+    <p>Set a dollar amount above which invoices are flagged for additional review before saving. Payable will show a warning flag on any invoice exceeding this amount. Set to "off" to allow all invoices to save directly.</p>
+
+    <h3>Payment Method Dropdown</h3>
+    <p>Toggle this on to show a dropdown of your QuickBooks payment methods when recording expenses. Tap <strong>↻ Sync Payments & Methods</strong> to load your accounts from QuickBooks. If turned off, Payable uses the payment method detected from the document.</p>
+
+    <h3>Payment Account Dropdown</h3>
+    <p>Similar to payment methods — shows your QuickBooks bank/credit card accounts when recording expenses. Useful if you want to specify which account an expense is charged to.</p>
+
+    <h3>Default Category</h3>
+    <p>Set a fallback category used when Payable cannot determine the category from the document. Leave blank to always use AI suggestion.</p>
+
+    <h3>License Key</h3>
+    <p>Enter your license key here to activate a paid plan. Keys are emailed to you after purchase at <a href="https://cephgate.com/payable" style="color:var(--teal);">cephgate.com/payable</a>.</p>
+
+    <h3>QuickBooks Connection</h3>
+    <p>Shows whether QuickBooks is connected. Use <strong>Reconnect</strong> if you've changed your QuickBooks password or if the connection has expired. Use <strong>Disconnect</strong> to revoke Payable's access to your QuickBooks account.</p>
+  </div>
+
+  <!-- ── FAQ ── -->
+  <h2>Frequently Asked Questions</h2>
+  <div class="card">
+    <div class="faq-item">
+      <p class="faq-q">Why does analysis take 10–20 seconds?</p>
+      <p class="faq-a">Payable sends your document to an AI model for extraction. PDF and text documents analyze faster (3–8 seconds). Large image files (phone photos) may take up to 20 seconds.</p>
+    </div>
+    <div class="faq-item">
+      <p class="faq-q">Payable says "No invoice detected" on an email with an attachment.</p>
+      <p class="faq-a">Payable currently supports PDF, image (JPG/PNG), and Word (.docx) attachments. Unsupported formats (e.g. Excel, CSV, ZIP) will show "No invoice detected." Try forwarding the email with a PDF version of the document.</p>
+    </div>
+    <div class="faq-item">
+      <p class="faq-q">The amount or vendor name was extracted incorrectly.</p>
+      <p class="faq-a">AI extraction is highly accurate but not perfect, especially on low-resolution images or non-standard document layouts. Always review extracted data before saving to QuickBooks. You can edit any field in QuickBooks after saving.</p>
+    </div>
+    <div class="faq-item">
+      <p class="faq-q">I hit my monthly save limit.</p>
+      <p class="faq-a">Free accounts include 5 saves per month. Upgrade to Pro ($12/mo, 30 saves) or Business ($39/mo, 250 saves) at <a href="https://cephgate.com/payable" style="color:var(--teal);">cephgate.com/payable</a>.</p>
+    </div>
+    <div class="faq-item">
+      <p class="faq-q">QuickBooks shows "Connection expired" or "Reconnect required."</p>
+      <p class="faq-a">QuickBooks OAuth tokens expire after 100 days of inactivity or when you change your Intuit password. Open Payable Settings and tap <strong>Reconnect</strong> to re-authorize.</p>
+    </div>
+    <div class="faq-item">
+      <p class="faq-q">How do I delete my data?</p>
+      <p class="faq-a">Disconnect QuickBooks from Settings to revoke token access. To request deletion of all stored data (QB tokens, usage records), email <a href="mailto:privacy@cephgate.com" style="color:var(--teal);">privacy@cephgate.com</a>.</p>
+    </div>
+    <div class="faq-item">
+      <p class="faq-q">Does Payable work on mobile Gmail?</p>
+      <p class="faq-a">Gmail add-ons are currently supported on Gmail in desktop web browsers only. Mobile Gmail (iOS/Android app) does not support add-ons.</p>
+    </div>
+  </div>
+
+  <!-- ── CONTACT FORM ── -->
+  <h2>Contact Support</h2>
+  <div class="card">
+    <form id="supportForm" onsubmit="submitForm(event)">
+      <div>
+        <label for="name">Your Name</label>
+        <input type="text" id="name" name="name" placeholder="Chris Langner" required />
+      </div>
+      <div>
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="email" placeholder="you@example.com" required />
+      </div>
+      <div>
+        <label for="topic">Topic</label>
+        <select id="topic" name="topic">
+          <option value="setup">Setup & Installation</option>
+          <option value="qb">QuickBooks Connection</option>
+          <option value="analysis">Invoice Analysis Issue</option>
+          <option value="billing">Billing & Plans</option>
+          <option value="bug">Bug Report</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+      <div>
+        <label for="message">Describe your issue</label>
+        <textarea id="message" name="message" placeholder="Please describe what happened and what you expected to happen..." required></textarea>
+      </div>
+      <button type="submit">Send Message →</button>
+    </form>
+    <p class="contact-direct">Or email us directly at <a href="mailto:support@cephgate.ai">support@cephgate.ai</a> — we typically respond within 1 business day.</p>
+  </div>
+
+</div>
+
+<footer>
+  <div>
+    <a href="https://cephgate.com">Home</a>
+    <a href="https://cephgate.com/payable">Payable</a>
+    <a href="/payable-privacy.html">Privacy Policy</a>
+    <a href="/payable-terms.html">Terms of Service</a>
+    <a href="mailto:support@cephgate.ai">support@cephgate.ai</a>
+  </div>
+  <div style="margin-top:12px;">Patent Pending — U.S. Application No. 19/632,163 · © 2026 Cephgate LLC</div>
+</footer>
+
+<script>
+function submitForm(e) {
+  e.preventDefault();
+  const name = document.getElementById('name').value;
+  const email = document.getElementById('email').value;
+  const topic = document.getElementById('topic').value;
+  const message = document.getElementById('message').value;
+  const subject = encodeURIComponent('Payable Support: ' + topic);
+  const body = encodeURIComponent('Name: ' + name + '\nEmail: ' + email + '\nTopic: ' + topic + '\n\n' + message);
+  window.location.href = 'mailto:support@cephgate.ai?subject=' + subject + '&body=' + body;
+}
+</script>
+
+</body>
+</html>
