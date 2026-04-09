@@ -85,9 +85,10 @@
         return;
       }
       // Send to Formspree or similar — for now just show success
-      fetch('https://formspree.io/f/payable-waitlist', {
+      fetch('https://script.google.com/macros/s/AKfycbx2eHIudFl6cSB1inn0ZMWejMHYQPFI4NMadReB9_ModJ_j37wnGElaJvovk79hOA9w3Q/exec', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email: email, source: 'cephgate.com/payable/coming-soon' })
       }).catch(function() {});
       document.getElementById('signup-form').style.display = 'none';
