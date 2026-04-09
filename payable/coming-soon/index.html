@@ -85,11 +85,13 @@
         return;
       }
       // Send to Formspree or similar — for now just show success
+      var formData = new FormData();
+      formData.append('email', email);
+      formData.append('source', 'cephgate.com/payable/coming-soon');
       fetch('https://script.google.com/macros/s/AKfycbx2eHIudFl6cSB1inn0ZMWejMHYQPFI4NMadReB9_ModJ_j37wnGElaJvovk79hOA9w3Q/exec', {
         method: 'POST',
         mode: 'no-cors',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email: email, source: 'cephgate.com/payable/coming-soon' })
+        body: formData
       }).catch(function() {});
       document.getElementById('signup-form').style.display = 'none';
       document.getElementById('success-msg').style.display = 'block';
