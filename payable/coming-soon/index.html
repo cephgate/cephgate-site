@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Payable — Coming Soon</title>
+  <meta name="description" content="Payable by Cephgate is launching soon. Join the waitlist for early access."/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #fff; color: #202124; min-height: 100vh; display: flex; flex-direction: column; }
+    nav { border-bottom: 1px solid #e8eaed; padding: 0 32px; height: 64px; display: flex; align-items: center; justify-content: space-between; }
+    .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .nav-logo img { width: 32px; height: 32px; border-radius: 7px; }
+    .nav-logo-name { font-weight: 700; font-size: 17px; color: #202124; }
+    .nav-logo-by { font-size: 12px; color: #5f6368; }
+    main { flex: 1; display: flex; align-items: center; justify-content: center; padding: 60px 32px; }
+    .card { max-width: 520px; width: 100%; text-align: center; }
+    .badge { display: inline-flex; align-items: center; gap: 8px; background: #e6f4ea; color: #1e8e3e; padding: 6px 16px; border-radius: 20px; font-size: 13px; font-weight: 600; margin-bottom: 32px; }
+    h1 { font-size: 42px; font-weight: 800; line-height: 1.15; color: #202124; margin-bottom: 16px; letter-spacing: -0.02em; }
+    h1 span { color: #2CA01C; }
+    .sub { font-size: 18px; color: #5f6368; line-height: 1.6; margin-bottom: 40px; }
+    .form-wrap { display: flex; gap: 10px; max-width: 420px; margin: 0 auto 16px; }
+    .form-wrap input { flex: 1; padding: 13px 16px; border: 1.5px solid #e8eaed; border-radius: 8px; font-size: 15px; color: #202124; outline: none; transition: border-color 0.2s; }
+    .form-wrap input:focus { border-color: #2CA01C; }
+    .form-wrap button { background: #2CA01C; color: #fff; border: none; padding: 13px 22px; border-radius: 8px; font-weight: 700; font-size: 15px; cursor: pointer; white-space: nowrap; transition: background 0.2s; }
+    .form-wrap button:hover { background: #1e8e3e; }
+    .form-note { font-size: 13px; color: #9aa0a6; margin-bottom: 48px; }
+    .success { display: none; background: #e6f4ea; color: #1e8e3e; padding: 14px 20px; border-radius: 8px; font-size: 15px; font-weight: 600; margin-bottom: 16px; }
+    .perks { display: flex; flex-direction: column; gap: 12px; text-align: left; background: #f8f9fa; border-radius: 12px; padding: 24px 28px; margin-bottom: 40px; }
+    .perk { display: flex; align-items: flex-start; gap: 12px; font-size: 14px; color: #5f6368; }
+    .perk-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
+    .perk strong { color: #202124; display: block; font-size: 14px; margin-bottom: 2px; }
+    footer { border-top: 1px solid #e8eaed; padding: 20px 32px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; font-size: 13px; color: #9aa0a6; }
+    footer a { color: #9aa0a6; text-decoration: none; }
+    footer a:hover { color: #2CA01C; }
+    @media (max-width: 500px) { .form-wrap { flex-direction: column; } h1 { font-size: 30px; } }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="/payable" class="nav-logo">
+      <img src="/payable-icon.png" alt="Payable" />
+      <span class="nav-logo-name">Payable</span>
+      <span class="nav-logo-by">by Cephgate</span>
+    </a>
+  </nav>
+
+  <main>
+    <div class="card">
+      <div class="badge">🚀 Launching Soon</div>
+      <h1>Invoices → QuickBooks,<br/><span>automatically.</span></h1>
+      <p class="sub">Payable is a Gmail add-on that reads your vendor invoices and saves them to QuickBooks in one click. Join the waitlist for early access.</p>
+
+      <div class="success" id="success-msg">✓ You're on the list! We'll email you when Payable launches.</div>
+
+      <div class="form-wrap" id="signup-form">
+        <input type="email" id="email-input" placeholder="your@email.com" />
+        <button onclick="submitEmail()">Join Waitlist</button>
+      </div>
+      <p class="form-note">No spam. Just a heads-up when we launch.</p>
+
+      <div class="perks">
+        <div class="perk"><span class="perk-icon">📧</span><div><strong>Works inside Gmail</strong>Open an invoice email — Payable activates in the sidebar automatically.</div></div>
+        <div class="perk"><span class="perk-icon">🤖</span><div><strong>AI extracts everything</strong>Vendor, amount, due date, PO number — from PDFs, images, and Word docs.</div></div>
+        <div class="perk"><span class="perk-icon">📗</span><div><strong>One click to QuickBooks</strong>Saves as a Bill or Expense with the original document attached. New vendors created automatically.</div></div>
+        <div class="perk"><span class="perk-icon">🆓</span><div><strong>Free plan available</strong>5 saves per month, no credit card required.</div></div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <span>© 2026 Cephgate LLC</span>
+    <div style="display:flex;gap:20px;">
+      <a href="https://cephgate.ai/privacy">Privacy</a>
+      <a href="https://cephgate.ai/terms">Terms</a>
+      <a href="mailto:support@cephgate.ai">Contact</a>
+    </div>
+  </footer>
+
+  <script>
+    function submitEmail() {
+      var email = document.getElementById('email-input').value.trim();
+      if (!email || !email.includes('@')) {
+        document.getElementById('email-input').style.borderColor = '#ea4335';
+        return;
+      }
+      // Send to Formspree or similar — for now just show success
+      fetch('https://formspree.io/f/payable-waitlist', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({ email: email, source: 'cephgate.com/payable/coming-soon' })
+      }).catch(function() {});
+      document.getElementById('signup-form').style.display = 'none';
+      document.getElementById('success-msg').style.display = 'block';
+    }
+    document.getElementById('email-input').addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') submitEmail();
+    });
+  </script>
+</body>
+</html>
