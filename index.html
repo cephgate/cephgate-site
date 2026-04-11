@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🐙</text></svg>">
   <title>Cephgate — Intelligent Workflow Decisions</title>
   <meta name="description" content="Cephgate is the approval intelligence platform. Multiple products, one engine. CoChair for higher ed. More verticals coming soon."/>
   <style>
@@ -190,9 +191,9 @@
     @media (max-width: 600px) {
       .demo-inner { grid-template-columns: 1fr; }
       nav .patent-badge { display: none; }
-      /* Hide nav text links on mobile, keep only logo + CTA */
-      nav a[href="/payable"],
-      nav a[href="/payable"] { display: none; }
+      /* Show both nav links on mobile, compact size */
+      nav a[href="https://cephgate.ai/payable"],
+      nav a[href*="cochair"] { font-size: 0.75rem; padding: 4px 10px; }
       .nav-cta { padding: 0.4rem 0.85rem; font-size: 0.8rem; white-space: nowrap; }
       nav { padding: 0 1rem; }
     }
@@ -208,7 +209,7 @@
     </div>
 
     <div style="display:flex;align-items:center;gap:6px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);border-radius:8px;padding:4px;">
-      <a href="/payable" style="color:var(--muted);text-decoration:none;font-size:0.85rem;font-weight:500;padding:5px 14px;border-radius:6px;transition:all 0.15s;" onmouseover="this.style.background='rgba(255,255,255,0.08)';this.style.color='#f1f5f9'" onmouseout="this.style.background='transparent';this.style.color='var(--muted)'">Payable</a>
+      <a href="https://cephgate.ai/payable" style="color:var(--muted);text-decoration:none;font-size:0.85rem;font-weight:500;padding:5px 14px;border-radius:6px;transition:all 0.15s;" onmouseover="this.style.background='rgba(255,255,255,0.08)';this.style.color='#f1f5f9'" onmouseout="this.style.background='transparent';this.style.color='var(--muted)'">Payable</a>
       <a href="https://cephgate.ai/cochair" style="color:var(--muted);text-decoration:none;font-size:0.85rem;font-weight:500;padding:5px 14px;border-radius:6px;transition:all 0.15s;" onmouseover="this.style.background='rgba(255,255,255,0.08)';this.style.color='#f1f5f9'" onmouseout="this.style.background='transparent';this.style.color='var(--muted)'">CoChair</a>
     </div>
 
@@ -250,7 +251,7 @@
     <div style="font-size:0.95rem; color:var(--muted); margin-bottom:2rem;">
       <div style="display:flex;flex-direction:column;gap:0.65rem;align-items:center;">
         <div><a href="https://cephgate.ai/cochair" style="text-decoration:none;"><span style="font-weight:700;color:#fff;">Co</span><span style="font-weight:700;color:#4da3ff;">Chair</span></a> — Higher Education Admin</div>
-        <div><a href="/payable" style="color:#4da3ff;text-decoration:none;font-weight:600;">Payable</a> — SMB Expense Approvals</div>
+        <div><a href="https://cephgate.ai/payable" style="color:#4da3ff;text-decoration:none;font-weight:600;">Payable</a> — SMB Expense Approvals</div>
         <div>Healthcare Billing &nbsp;<a href="/request-demo?v=healthcare" style="color:#4da3ff;text-decoration:none;font-style:italic;">request custom demo</a></div>
         <div>HR &amp; IT Workflows &nbsp;<a href="/request-demo?v=hr_it" style="color:#4da3ff;text-decoration:none;font-style:italic;">request custom demo</a></div>
       </div>

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🐙</text></svg>">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Payable — Coming Soon</title>
@@ -85,13 +86,10 @@
         return;
       }
       // Send to Formspree or similar — for now just show success
-      var formData = new FormData();
-      formData.append('email', email);
-      formData.append('source', 'cephgate.com/payable/coming-soon');
-      fetch('https://script.google.com/macros/s/AKfycbx2eHIudFl6cSB1inn0ZMWejMHYQPFI4NMadReB9_ModJ_j37wnGElaJvovk79hOA9w3Q/exec', {
+      fetch('https://payable-api-production.up.railway.app/waitlist', {
         method: 'POST',
-        mode: 'no-cors',
-        body: formData
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: email, source: 'cephgate.com/payable/coming-soon' })
       }).catch(function() {});
       document.getElementById('signup-form').style.display = 'none';
       document.getElementById('success-msg').style.display = 'block';
